@@ -7,7 +7,7 @@
 <script>
 </script>
 
-<style lang="stylus">
+<style lang="stylus" rel="stylesheet/stylus">
 .foot {
   height: 70px
   color: #2db7f5
