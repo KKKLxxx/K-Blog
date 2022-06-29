@@ -1,39 +1,143 @@
 import Vue from 'vue'
+import router from '@/router'
+import store from '@/store'
+import 'iview/dist/styles/iview.css'
+import '@/common/stylus/index.styl'
+import App from './App.vue'
+import httpRequest from '@/utils/httpRequest'
+import '@/icon/iconfont.css'
+import mavonEditor from 'mavon-editor'
+import 'mavon-editor/dist/css/index.css'
+import VueCookie from 'vue-cookie' // 挂在在全局了
+import VueParticles from 'vue-particles'
+import APlayer from '@moefe/vue-aplayer'
+import MetaInfo from 'vue-meta-info'
 
-import 'normalize.css/normalize.css' // A modern alternative to CSS resets
+// iView UI 组件引入
+import {
+  ListItemMeta,
+  ListItem,
+  List,
+  Row,
+  Col,
+  Button,
+  Input,
+  Progress,
+  Tag,
+  Dropdown,
+  DropdownMenu,
+  DropdownItem,
+  Menu,
+  Submenu,
+  MenuItem,
+  Icon,
+  Upload,
+  Card,
+  LoadingBar,
+  Affix,
+  Select,
+  Option,
+  Form,
+  FormItem,
+  Carousel,
+  CarouselItem,
+  DatePicker,
+  DatePickerCell,
+  Spin,
+  Rate,
+  Modal,
+  Message,
+  Page,
+  Notice,
+  TimelineItem,
+  Poptip
+} from 'iview'
 
-import ElementUI from 'element-ui'
-import 'element-ui/lib/theme-chalk/index.css'
+Vue.use(VueCookie)
+Vue.use(VueParticles)
+Vue.use(MetaInfo)
+Vue.use(mavonEditor)
+Vue.use(APlayer, {
+  defaultCover: 'https://github.com/u3u.png',
+  productionTip: true
+})
 
-import '@/styles/index.scss' // global css
+Vue.component('ListItem', ListItem)
+Vue.component('ListItemMeta', ListItemMeta)
+Vue.component('List', List)
+Vue.component('iv-row', Row)
+Vue.component('iv-col', Col)
+Vue.component('iv-card', Card)
+Vue.component('iv-button', Button)
+Vue.component('iv-page', Page)
+Vue.component('iv-input', Input)
+Vue.component('iv-progress', Progress)
+Vue.component('iv-tag', Tag)
+Vue.component('iv-dropdown', Dropdown)
+Vue.component('iv-dropdown-menu', DropdownMenu)
+Vue.component('iv-dropdown-item', DropdownItem)
+Vue.component('iv-menu', Menu)
+Vue.component('iv-submenu', Submenu)
+Vue.component('iv-menu-item', MenuItem)
+Vue.component('iv-icon', Icon)
+Vue.component('iv-loadingBar', LoadingBar)
+Vue.component('iv-affix', Affix)
+Vue.component('iv-select', Select)
+Vue.component('iv-option', Option)
+Vue.component('iv-carousel', Carousel)
+Vue.component('iv-carousel-item', CarouselItem)
+Vue.component('iv-date-picker', DatePicker)
+Vue.component('iv-date-picker-cell', DatePickerCell)
+Vue.component('iv-spin', Spin)
+Vue.component('iv-rate', Rate)
+Vue.component('iv-upload', Upload)
+Vue.component('iv-form', Form)
+Vue.component('iv-formItem', FormItem)
+Vue.component('iv-modal', Modal)
+Vue.component('iv-timelineItem', TimelineItem)
+Vue.component('iv-poptip', Poptip)
 
-import App from './App'
-import store from './store'
-import router from './router'
-
-import '@/icons' // icon
-import '@/permission' // permission control
-
-/**
- * If you don't want to use mock-server
- * you want to use MockJs for mock api
- * you can execute: mockXHR()
- *
- * Currently MockJs will be used in the production environment,
- * please remove it before going online ! ! !
- */
-if (process.env.NODE_ENV === 'production') {
-  const { mockXHR } = require('../mock')
-  mockXHR()
+Vue.prototype.$http = httpRequest // Ajax 请求方法
+Vue.prototype.$https = httpRequest // Ajax 请求方法
+Vue.prototype.$Modal = Modal
+Vue.prototype.$Message = Message
+Vue.prototype.$Notice = Notice
+Vue.prototype.$loadScript = (script, url, callback) => {
+  script = script || document.createElement('script')
+  if (script.readyState) {
+    // IE浏览器
+    script.onreadystatechange = function () {
+      if (script.readyState === 'loaded' || script.readyState === 'complete') {
+        script.onreadystatechange = null
+        callback()
+      }
+    }
+  } else {
+    // 其他浏览器
+    script.onload = function () {
+      callback()
+    }
+  }
+  script.src = url
+  document.getElementsByTagName('head')[0].appendChild(script)
 }
+Vue.directive('title', {
+  inserted: function (el, binding) {
+    document.title = el.dataset.title
+  }
+})
 
-Vue.use(ElementUI)
-
-Vue.config.productionTip = false
-
+Vue.prototype.$Notice.config({
+  top: 70,
+  duration: 3
+})
+// eslint-disable-next-line no-new
 new Vue({
-  el: '#app',
   router,
   store,
-  render: h => h(App)
+  el: '#app',
+  render: h => h(App),
+  mounted () {
+    document.dispatchEvent(new Event('custom-render-trigger'))
+  }
 })
