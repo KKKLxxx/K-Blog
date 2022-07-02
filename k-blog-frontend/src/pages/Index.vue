@@ -34,8 +34,8 @@ export default {
     // 点击图片回到顶部方法，加计时器是为了过渡顺滑
     backTop() {
       const that = this
-      let timer = setInterval(() => {
-        let speed = Math.floor(-that.scrollTop / 5)
+      const timer = setInterval(() => {
+        const speed = Math.floor(-that.scrollTop / 5)
         document.documentElement.scrollTop = document.body.scrollTop = that.scrollTop + speed
         if (that.scrollTop === 0) {
           clearInterval(timer)
@@ -45,7 +45,7 @@ export default {
 
     // 音乐列表
     musicList() {
-      let params = {
+      const params = {
         pageSize: 10,
         currentPage: 1
       }

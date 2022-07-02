@@ -11,7 +11,7 @@ const service = axios.create({
 })
 
 // request interceptor
-service.interceptors.request.use(
+/* service.interceptors.request.use(
   config => {
     // do something before request is sent
 
@@ -28,7 +28,7 @@ service.interceptors.request.use(
     console.log(error) // for debug
     return Promise.reject(error)
   }
-)
+) */
 
 // response interceptor
 service.interceptors.response.use(
@@ -46,7 +46,7 @@ service.interceptors.response.use(
     const res = response.data
 
     // if the custom code is not 20000, it is judged as an error.
-    if (res.code !== 20000) {
+    if (res.code !== 0) {
       Message({
         message: res.message || 'Error',
         type: 'error',

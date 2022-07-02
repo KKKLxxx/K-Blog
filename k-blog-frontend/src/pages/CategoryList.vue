@@ -4,10 +4,11 @@
       <iv-col :xs="24" :sm="24" :md="24" :lg="17">
         <div class="layout-left">
           <section-title :mainTitle="'分类'" :subTitle="'分类'"/>
-          <article-list-cell v-for="article in articleList" :article="article" :key="article.id"></article-list-cell>
-          <iv-page class="mt-10 text-right" :total="total" :current="currentPage" :page-size="pageSize"
-                   @on-change="changePage" @on-page-size-change="changeSize" show-elevator show-total
-          />
+          <iv-row>
+            <iv-col v-for="category in categoryList" :key="category.id" span="8">
+              <category-list-cell class="cell" :category="category"></category-list-cell>
+            </iv-col>
+          </iv-row>
         </div>
       </iv-col>
       <iv-col :xs="0" :sm="0" :md="0" :lg="7">
@@ -21,66 +22,46 @@
 
 <script type="text/ecmascript-6">
 import Recommend from '@/components/Recommend'
-import ArticleListCell from '@/components/Article/ArticleListCell'
+import CategoryListCell from '@/components/category/CategoryListCell'
 import SectionTitle from '@/components/SectionTitle/SectionTitle'
-import TitleMenuFilter from '@/components/SectionTitle/TitleMenuFilter'
-import merge from 'lodash/merge' // 合并对象工具
+import { getAll } from '@/api/category'
 
 export default {
   components: {
     'recommend': Recommend,
-    'article-list-cell': ArticleListCell,
-    'section-title': SectionTitle,
-    'title-menu-filter': TitleMenuFilter
+    'category-list-cell': CategoryListCell,
+    'section-title': SectionTitle
   },
   data() {
     return {
-      articleList: [],
-      currentPage: 1,
-      pageSize: 5,
-      total: 0
+      categoryList: [
+        {
+          id: 1,
+          name: '哈哈',
+          count: 1
+        },
+        {
+          id: 2,
+          name: '呵呵',
+          count: 1
+        },
+        {
+          id: 3,
+          name: '呃呃',
+          count: 1
+        }
+      ]
     }
   },
   created() {
-    let param = {}
-    param.latest = true
-    this.listArticle(param)
+    this.listArticle()
   },
   methods: {
-    listArticle(param) {
-      let orderBy = {
-        articleType: 1001,
-        pageSize: this.pageSize,
-        currentPage: this.currentPage
-      }
-      let params = merge(param, orderBy)
-      this.$http({
-        url: this.$http.adornUrl('/article/list'),
-        method: 'get',
-        params: this.$http.adornParams(params)
-      }).then(({ data }) => {
-        if (data.result.data !== null && data.status === 0) {
-          this.articleList = data.result.data.list
-          this.total = data.result.data.total
-        }
+    listArticle() {
+      getAll().then(response => {
+        console.log(response)
+        this.categoryList = response.data
       })
-    },
-    changePage(page) {
-      this.currentPage = page
-      this.$router.push({
-        path: this.$route.path,
-        query: {
-          latest: true,
-          pageSize: 5,
-          currentPage: this.currentPage
-        }
-      })
-      this.listArticle()
-    },
-    changeSize(size) {
-      this.pageSize = size
-      this.currentPage = 1
-      this.listArticle()
     }
   }
 }
@@ -112,4 +93,8 @@ export default {
     @media screen and (min-width: 1200px)
       padding 0 10px
 
+.cell {
+  margin auto
+  display table
+}
 </style>

@@ -7,20 +7,18 @@
           <section-title :mainTitle="'博文'" :subTitle="'Articles'">
             <title-menu-filter @filterByMenu="refreshArticle" slot="menu"></title-menu-filter>
           </section-title>
-          <article-list-cell v-for="article in articleList" :article="article" :key="article.title"
-                             :type="'article'"
-          ></article-list-cell>
-          <iv-page class="mt-10 text-right" :total="total" :current="pageParam.currentPage"
-                   :page-size="pageParam.pageSize" @on-change="changePage" @on-page-size-change="changeSize"
-                   show-elevator show-total
-          />
+          <article-list-cell v-for="article in articleList" :key="article.id" :article="article"></article-list-cell>
+          <iv-page :total="total" :current="pageParam.curPage"
+                   :page-size="pageParam.pageSize" :page-size-opts="[5, 10, 15, 20]"
+                   @on-change="changePage" @on-page-size-change="changeSize"
+                   show-elevator show-total show-sizer/>
         </div>
       </iv-col>
       <iv-col :xs="0" :sm="0" :md="0" :lg="7">
         <div class="layout-right">
-          <about></about>
-          <recommend></recommend>
-          <friend-links style="margin-top:15px;"></friend-links>
+          <about/>
+          <recommend style="margin-top:20px;" />
+          <friend-links style="margin-top:20px;" />
         </div>
       </iv-col>
     </iv-row>
@@ -36,19 +34,9 @@ import About from '@/components/About'
 import FriendLinks from '@/components/FriendLinks'
 import Recommend from '@/components/Recommend'
 import merge from 'lodash/merge' // 合并对象工具
+import { getAll } from '@/api/article'
 
 export default {
-  data() {
-    return {
-      articleList: [],
-      manager: {},
-      total: 1,
-      pageParam: {
-        pageSize: 5,
-        currentPage: 1
-      }
-    }
-  },
   components: {
     'photo-wall': PhotoWall,
     'article-list-cell': ArticleListCell,
@@ -58,46 +46,34 @@ export default {
     'friend-links': FriendLinks,
     'recommend': Recommend
   },
-  created: function() {
-    let param = {}
-    param.latest = true
-    this.refreshArticle(param)
-  },
-  mounted: function() {
-    let manager = JSON.parse(localStorage.getItem('currentManager'))
-    if (manager !== null) {
-      this.manager = manager
+  data() {
+    return {
+      articleList: [],
+      total: 0,
+      pageParam: {
+        pageSize: 5,
+        curPage: 1
+      }
     }
+  },
+  created: function() {
+    this.refreshArticle()
   },
   methods: {
     refreshArticle(param) {
-      let params = merge(param, this.pageParam)
-      this.$http({
-        url: this.$http.adornUrl('/article/list'),
-        params: this.$http.adornParams(params),
-        method: 'get'
-      }).then(({ data }) => {
-        if (data.result.data !== null && data.status === 0) {
-          this.articleList = data.result.data.list
-          this.total = data.result.data.total
-        }
+      const params = merge(param, this.pageParam)
+      getAll(params).then(response => {
+        this.articleList = response.data.records
+        this.total = response.data.total
       })
     },
     changePage(page) {
-      this.pageParam.currentPage = page
-      this.$router.push({
-        path: this.$route.path,
-        query: {
-          latest: true,
-          pageSize: 5,
-          currentPage: this.pageParam.currentPage
-        }
-      })
+      this.pageParam.curPage = page
       this.refreshArticle()
     },
     changeSize(size) {
       this.pageParam.pageSize = size
-      this.pageParam.currentPage = 1
+      this.pageParam.curPage = 1
       this.refreshArticle()
     }
   }
@@ -112,8 +88,4 @@ export default {
 
   .layout-left, .layout-right
     padding 0 10px
-
-/*.live-bg{
-  background-image:url({{this.imgUrl}})
-}*/
 </style>

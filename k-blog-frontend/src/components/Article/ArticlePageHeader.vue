@@ -1,23 +1,17 @@
 <template>
   <div class="article-page-header">
-    <p class="title">{{ article.articleName }}</p>
+    <p class="title">{{ article.title }}</p>
     <iv-row>
       <iv-col :xs="24" :sm="10" :md="10" :lg="10" style="padding-left: 0;padding-right: 0;">
-        <p class="info"><span class="author"><iv-icon type="ios-contact" class="icon"/><a
-          href=""
-        >{{ article.managerName }}</a></span>
-          <span class="publish-time">  <iv-icon type="ios-timer-outline" class="icon"/>{{ article.createTime }}</span>
+        <p class="info">
+          <span class="author"><iv-icon type="ios-contact" class="icon"/>KKKL</span>
+          <span class="publish-time"><iv-icon type="ios-timer-outline" class="icon"/>{{ article.createTime }}</span>
         </p>
       </iv-col>
       <iv-col :xs="24" :sm="14" :md="14" :lg="14" style="padding-left: 0;padding-right: 0;">
         <p class="operate_info">
-          <span><a><iv-icon type="eye"></iv-icon>{{ article.articleReadCount }} 阅读</a></span>
-          <!--          <span><a @click="likePost(article)"><iv-icon type="eye"></iv-icon> 点赞</a></span>-->
-          <span v-show="manager.id===article.managerId ">
-            <router-link :to="{path:'/compile',query:{managerId:manager.id,articleId:article.id}}">
-              <iv-icon type="compose"></iv-icon>编辑
-            </router-link>
-          </span>
+          <span><a><iv-icon type="eye"></iv-icon>{{ article.readNum }} 阅读</a></span>
+          <!--<span><a @click="likePost(article)"><iv-icon type="eye"></iv-icon> 点赞</a></span>-->
         </p>
       </iv-col>
     </iv-row>

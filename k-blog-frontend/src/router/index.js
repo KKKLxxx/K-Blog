@@ -18,7 +18,6 @@ Vue.use(Router)
 const router = new Router({
   mode: 'history',
   routes: [
-    // eslint-disable-next-line no-undef
     {
       path: '/404',
       component: page404,
