@@ -1,6 +1,6 @@
 import Vue from 'vue'
 import Router from 'vue-router'
-import {LoadingBar } from 'iview'
+import { LoadingBar } from 'iview'
 import Index from '@/pages/Index'
 import HomePage from '@/pages/HomePage'
 import ArticleDetail from '@/pages/ArticleDetail'

@@ -1,16 +1,8 @@
 import Vue from 'vue'
-
-import 'normalize.css/normalize.css' // A modern alternative to CSS resets
-
-import ElementUI from 'element-ui'
-// import 'element-ui/lib/theme-chalk/index.css'
-
-import '@/styles/index.scss' // global css
-
 import App from './App'
 import store from './store'
 import router from './router'
-
+import APlayer from '@moefe/vue-aplayer'
 // import '@/permission' // permission control
 
 import 'iview/dist/styles/iview.css'
@@ -36,7 +28,6 @@ import {
   Notice,
   Poptip
 } from 'iview'
-
 
 Vue.component('ListItem', ListItem)
 Vue.component('ListItemMeta', ListItemMeta)
@@ -64,6 +55,12 @@ Vue.prototype.$Notice.config({
   top: 70,
   duration: 3
 })
+
+Vue.use(APlayer, {
+  defaultCover: 'https://github.com/u3u.png',
+  productionTip: true
+})
+
 /**
  * If you don't want to use mock-server
  * you want to use MockJs for mock api
@@ -76,8 +73,6 @@ if (process.env.NODE_ENV === 'production') {
   const { mockXHR } = require('../mock')
   mockXHR()
 }
-
-Vue.use(ElementUI)
 
 Vue.config.productionTip = false
 
