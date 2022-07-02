@@ -5,6 +5,7 @@ import Index from '@/pages/Index'
 import HomePage from '@/pages/HomePage'
 import ArticleDetail from '@/pages/ArticleDetail'
 import ArticleList from '@/pages/ArticleList'
+import CategoryList from '@/pages/CategoryList'
 import LifeList from '@/pages/LifeList'
 import TimeLinePage from '@/pages/TimeLinePage'
 import page404 from '@/components/404/page404'
@@ -16,8 +17,6 @@ Vue.use(Router)
 
 const router = new Router({
   mode: 'history',
-  // base:"/aqian_blog/",
-  scrollBehavior: () => ({y: 0}),
   routes: [
     // eslint-disable-next-line no-undef
     {
@@ -53,6 +52,12 @@ const router = new Router({
           path: '/articleList',
           name: 'articleList',
           component: ArticleList
+        },
+        // 分类列表
+        {
+          path: '/categoryList',
+          name: 'categoryList',
+          component: CategoryList
         },
         // 文章详情页
         {

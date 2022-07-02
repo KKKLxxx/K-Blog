@@ -20,10 +20,10 @@ export default {
     hrefText: ''
   },
   computed: {
-    styleType () {
+    styleType() {
       return 'style-date-' + this.dateType
     },
-    iconType () {
+    iconType() {
       return {
         'ivu-icon-clock': this.dateType === 'year'
       }

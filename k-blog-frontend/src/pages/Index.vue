@@ -19,20 +19,20 @@ export default {
     CommonHeader,
     CommonFooter
   },
-  data () {
+  data() {
     return {
       btnFlag: false,
       audio: []
     }
   },
 
-  mounted () {
+  mounted() {
     this.musicList()
   },
 
   methods: {
     // 点击图片回到顶部方法，加计时器是为了过渡顺滑
-    backTop () {
+    backTop() {
       const that = this
       let timer = setInterval(() => {
         let speed = Math.floor(-that.scrollTop / 5)
@@ -44,7 +44,7 @@ export default {
     },
 
     // 音乐列表
-    musicList () {
+    musicList() {
       let params = {
         pageSize: 10,
         currentPage: 1
@@ -53,7 +53,7 @@ export default {
         url: this.$http.adornUrl('/music/list'),
         method: 'get',
         params: this.$http.adornParams(params)
-      }).then(({data}) => {
+      }).then(({ data }) => {
         if (data.result.data !== null && data.status === 0) {
           this.audio = data.result.data.list
         }

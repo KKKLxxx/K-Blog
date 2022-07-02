@@ -9,15 +9,17 @@
 
           <!-- &nbsp;({{item.createTime}}) -->
           <a @click="toParent(comment,item)" style="margin-left: 30px;">
-            <Icon type="ios-chatbubbles-outline"/> 回复
+            <Icon type="ios-chatbubbles-outline"/>
+            回复
           </a>
           <li style="margin-top: 10px;">
 
           </li>
         </ListItem>
         <div v-if="item.replyComments" class="reply2">
-          <reply :replyComment="item.replyComments" :comment='item'
-                 v-bind="$attrs" v-on="$listeners"></reply>
+          <reply :replyComment="item.replyComments" :comment="item"
+                 v-bind="$attrs" v-on="$listeners"
+          ></reply>
         </div>
 
       </ListItem>
@@ -35,7 +37,7 @@ export default {
   },
   methods: {
     // 获取父类的方法
-    toParent (comment, item) {
+    toParent(comment, item) {
       this.$emit('showCommentInput', comment, item)
     }
   }

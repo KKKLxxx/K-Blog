@@ -5,13 +5,15 @@
         <div class="layout-left">
           <photo-wall></photo-wall>
           <section-title :mainTitle="'博文'" :subTitle="'Articles'">
-             <title-menu-filter @filterByMenu="refreshArticle"  slot="menu"></title-menu-filter>
+            <title-menu-filter @filterByMenu="refreshArticle" slot="menu"></title-menu-filter>
           </section-title>
           <article-list-cell v-for="article in articleList" :article="article" :key="article.title"
-                             :type="'article'"></article-list-cell>
-          <iv-page class='mt-10 text-right' :total="total" :current='pageParam.currentPage'
-                   :page-size='pageParam.pageSize' @on-change="changePage" @on-page-size-change="changeSize"
-                   show-elevator show-total/>
+                             :type="'article'"
+          ></article-list-cell>
+          <iv-page class="mt-10 text-right" :total="total" :current="pageParam.currentPage"
+                   :page-size="pageParam.pageSize" @on-change="changePage" @on-page-size-change="changeSize"
+                   show-elevator show-total
+          />
         </div>
       </iv-col>
       <iv-col :xs="0" :sm="0" :md="0" :lg="7">
@@ -36,7 +38,7 @@ import Recommend from '@/components/Recommend'
 import merge from 'lodash/merge' // 合并对象工具
 
 export default {
-  data () {
+  data() {
     return {
       articleList: [],
       manager: {},
@@ -56,32 +58,32 @@ export default {
     'friend-links': FriendLinks,
     'recommend': Recommend
   },
-  created: function () {
+  created: function() {
     let param = {}
     param.latest = true
     this.refreshArticle(param)
   },
-  mounted: function () {
+  mounted: function() {
     let manager = JSON.parse(localStorage.getItem('currentManager'))
     if (manager !== null) {
       this.manager = manager
     }
   },
   methods: {
-    refreshArticle (param) {
+    refreshArticle(param) {
       let params = merge(param, this.pageParam)
       this.$http({
         url: this.$http.adornUrl('/article/list'),
         params: this.$http.adornParams(params),
         method: 'get'
-      }).then(({data}) => {
+      }).then(({ data }) => {
         if (data.result.data !== null && data.status === 0) {
           this.articleList = data.result.data.list
           this.total = data.result.data.total
         }
       })
     },
-    changePage (page) {
+    changePage(page) {
       this.pageParam.currentPage = page
       this.$router.push({
         path: this.$route.path,
@@ -93,7 +95,7 @@ export default {
       })
       this.refreshArticle()
     },
-    changeSize (size) {
+    changeSize(size) {
       this.pageParam.pageSize = size
       this.pageParam.currentPage = 1
       this.refreshArticle()

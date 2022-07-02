@@ -7,7 +7,8 @@
           <div v-for="year in timelineList" :key="year.year">
             <archive-list-time-title :date="year.year" :count="year.article.length"></archive-list-time-title>
             <archive-list-cell v-for="post in year.article" :post="post"
-                               :key="post.articleName"></archive-list-cell>
+                               :key="post.articleName"
+            ></archive-list-cell>
             <!-- <archive-list-cell v-for="post in year.article"
                                :key="post.articleName"></archive-list-cell> -->
           </div>
@@ -29,7 +30,7 @@ import ArchiveListTimeTitle from '@/components/TimeLine/ArchiveListTimeTitle'
 import Recommend from '@/components/Recommend'
 
 export default {
-  data () {
+  data() {
     return {
       timelineList: []
     }
@@ -38,22 +39,22 @@ export default {
     'timeline-header': TimeLineHeader,
     'archive-list-time-title': ArchiveListTimeTitle,
     'archive-list-cell': ArchiveListCell,
-    'recommend': Recommend,
+    'recommend': Recommend
   },
-  created () {
+  created() {
     this.listTimeline()
   },
-  mounted () {
+  mounted() {
     var h = document.body.clientHeight - 60 - 35 - 30
     document.getElementsByClassName('home-content')[0].style.height = h + 'px'
   },
   methods: {
-    listTimeline () {
+    listTimeline() {
       this.$http({
         url: this.$http.adornUrl('/article/timeLine'),
         params: this.$http.adornParams(),
         method: 'get'
-      }).then(({data}) => {
+      }).then(({ data }) => {
         if (data.result.data !== null && data.status === 0) {
           this.timelineList = data.result.data
         }

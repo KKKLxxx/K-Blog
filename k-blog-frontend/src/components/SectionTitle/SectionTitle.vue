@@ -5,7 +5,8 @@
       <span class="vertical-line"></span>
       <span class="sub-title">{{ subTitle }}</span>
       <span class="view-more"><a :href="tipHref" v-if="tipText">{{ tipText }} <iv-icon
-        type="arrow-right-b"></iv-icon></a></span>
+        type="arrow-right-b"
+      ></iv-icon></a></span>
     </div>
     <div class="menu">
       <slot name="menu"></slot>

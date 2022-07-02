@@ -10,7 +10,7 @@ import Panel from '@/components/Panel'
 
 export default {
   methods: {
-    recalcActive () {
+    recalcActive() {
       // 先计算list相对于页面的顶部距离
       var listScrollTop = this.$refs.list.getBoundingClientRect().top + document.documentElement.scrollTop
       // 再计算active相对于页面的顶部距离
@@ -23,7 +23,7 @@ export default {
       activeIndicator.style.top = activeANodeScrollTop - listScrollTop + 'px'
       activeIndicator.style.height = activeAnode.clientHeight + 'px'
     },
-    beActive (event) {
+    beActive(event) {
       var activeANode = this.$refs.list.querySelector('.active')
       if (activeANode !== null) {
         activeANode.classList.remove('active')
@@ -34,10 +34,10 @@ export default {
       })
     }
   },
-  mounted: function () {
+  mounted: function() {
     this.recalcActive()
   },
-  updated: function () {
+  updated: function() {
     this.recalcActive()
   },
   components: {

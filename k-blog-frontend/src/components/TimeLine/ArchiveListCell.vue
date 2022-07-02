@@ -7,7 +7,8 @@
           {{ post.articleName }}
         </router-link>
         <a class="see-desc" @click.stop="seeDesc" :class="{show: showDesc}">查看简介&nbsp;&nbsp;<iv-icon
-          type="android-arrow-dropup-circle"></iv-icon>
+          type="android-arrow-dropup-circle"
+        ></iv-icon>
         </a>
         <p class="desc" :class="{show: showDesc}">{{ post.articleRemark }}</p>
       </div>
@@ -24,13 +25,13 @@ export default {
       Type: Object
     }
   },
-  data () {
+  data() {
     return {
       showDesc: false
     }
   },
   methods: {
-    seeDesc () {
+    seeDesc() {
       this.showDesc = !this.showDesc
     }
   }

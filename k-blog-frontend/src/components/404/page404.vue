@@ -6,7 +6,7 @@
 
 <script type="text/ecmascript-6">
 export default {
-  created () {
+  created() {
     // todo 待修改
     // window.location.href = 'https://www.mfx.ink/404.html'
   }

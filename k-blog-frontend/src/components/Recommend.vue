@@ -7,8 +7,8 @@
             <p class="title">{{ recommend.articleName }}</p>
             <p class="info">
               <span class="time">{{ recommend.createTime }}</span>
-<!--              <span class="likes"><iv-icon type="heart"></iv-icon> {{ recommend.likeNum }} </span>-->
-<!--              <span class="comments"><iv-icon type="compose"></iv-icon> {{ recommend.commentNum }} </span>-->
+              <!--              <span class="likes"><iv-icon type="heart"></iv-icon> {{ recommend.likeNum }} </span>-->
+              <!--              <span class="comments"><iv-icon type="compose"></iv-icon> {{ recommend.commentNum }} </span>-->
               <span class="readings"><iv-icon type="eye"></iv-icon> {{ recommend.articleReadCount }} </span>
             </p>
           </router-link>
@@ -26,18 +26,18 @@ export default {
   components: {
     'panel': Panel
   },
-  data () {
+  data() {
     return {
       recommendList: [],
       currentPage: 1,
       pageSize: 5
     }
   },
-  created () {
+  created() {
     this.listRecommend()
   },
   methods: {
-    listRecommend () {
+    listRecommend() {
       let orderBy = {
         articleState: 2
       }
@@ -46,7 +46,7 @@ export default {
         url: this.$http.adornUrl('/article/recommend'),
         method: 'get',
         params: this.$http.adornParams(params)
-      }).then(({data}) => {
+      }).then(({ data }) => {
         if (data.result.data !== null && data.status === 0) {
           this.recommendList = data.result.data
         }

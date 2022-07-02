@@ -1,4 +1,4 @@
-var Toc = function Toc (id, options) {
+var Toc = function Toc(id, options) {
   this.el = document.getElementById(id)
   if (!this.el) return
   this.options = options || {}
@@ -10,13 +10,13 @@ var Toc = function Toc (id, options) {
   this._init()
 }
 
-Toc.prototype._init = function () {
+Toc.prototype._init = function() {
   this._collectTitleElements()
   this._createTocContent()
   this._showToc()
 }
 
-Toc.prototype._collectTitleElements = function () {
+Toc.prototype._collectTitleElements = function() {
   this._elTitlesNames = []
   this.elTitleElements = []
   for (var i = 1; i < 7; i++) {
@@ -35,7 +35,7 @@ Toc.prototype._collectTitleElements = function () {
   }
 }
 
-Toc.prototype._createTocContent = function () {
+Toc.prototype._createTocContent = function() {
   this._elTitleElementsLen = this.elTitleElements.length
   if (!this._elTitleElementsLen) return
   this.tocContent = ''
@@ -86,7 +86,7 @@ Toc.prototype._createTocContent = function () {
   this.tocContent = '<div class="active-indicator"></div><ul class="menu-root">' + this.tocContent + '</ul>'
 }
 
-Toc.prototype._showToc = function () {
+Toc.prototype._showToc = function() {
   this.toc = document.createElement('div')
   this.toc.innerHTML = this.tocContent
   this.toc.setAttribute('class', this.tocClass)

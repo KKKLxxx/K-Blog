@@ -5,7 +5,8 @@
         <div class="dev-sign-main ivu-card ivu-card-dis-hover ivu-card-shadow">
           <div class="ivu-card-body">
             <iv-form autocomplete="off" class="ivu-form ivu-form-label-top" ref="registerForm" :model="form"
-                     :rules="rules" @keydown.enter.native="handleSubmit">
+                     :rules="rules" @keydown.enter.native="handleSubmit"
+            >
               <div class="ivu-form-item ivu-form-item-required ivu-form-item-error">
                 <label class="ivu-form-item-label">电子邮箱</label>
                 <iv-formItem prop="userName"><!----> <!---->
@@ -72,7 +73,7 @@ export default {
       type: Array,
       default: () => {
         return [
-          {required: true, message: '账号不能为空', trigger: 'blur'}
+          { required: true, message: '账号不能为空', trigger: 'blur' }
         ]
       }
     },
@@ -80,13 +81,13 @@ export default {
       type: Array,
       default: () => {
         return [
-          {required: true, message: '密码不能为空', trigger: 'blur'}
+          { required: true, message: '密码不能为空', trigger: 'blur' }
         ]
       }
     }
   },
   inject: ['reload'],
-  data () {
+  data() {
     return {
       form: {
         userName: '',
@@ -94,11 +95,11 @@ export default {
       }
     }
   },
-  created () {
+  created() {
     // this.getBook()
   },
   computed: {
-    rules () {
+    rules() {
       return {
         userName: this.userNameRules,
         password: this.passwordRules
@@ -106,7 +107,7 @@ export default {
     }
   },
   methods: {
-    logins () {
+    logins() {
       // alert("请注意去你的邮箱查收验证码哦");
       if (this.form.userName === null || this.form.userName === '') {
         this.$Message.error('请输入你的邮箱哦！')
@@ -124,7 +125,7 @@ export default {
         url: this.$http.adornUrl('/login'),
         method: 'post',
         data: this.$https.adornDatas(params)
-      }).then(({data}) => {
+      }).then(({ data }) => {
         if (data.result.status === -1) {
           this.$Message.error(data.result.error)
         } else {
@@ -133,13 +134,13 @@ export default {
           localStorage.setItem('currentManager', JSON.stringify(data.result.manager))
           this.reload()
           // 跳到首页
-          this.$router.push({path: '/'})
+          this.$router.push({ path: '/' })
           // this.$router.go(-1)
         }
       })
     },
 
-    handleSubmit () {
+    handleSubmit() {
       this.$refs.registerForm.validate((valid) => {
         if (valid) {
           this.$emit('on-success-valid', {

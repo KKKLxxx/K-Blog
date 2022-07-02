@@ -1,6 +1,6 @@
-import {scrollTop} from './SmoothScroll'
+import { scrollTop } from './SmoothScroll'
 
-var TocScrollSpy = function (articleId, tocId, options) {
+var TocScrollSpy = function(articleId, tocId, options) {
   this.articleElement = document.getElementById(articleId)
   this.tocElement = document.getElementById(tocId)
   if (!this.articleElement || !this.tocElement || !this.articleElement.children || !this.tocElement.children) return
@@ -16,7 +16,7 @@ var TocScrollSpy = function (articleId, tocId, options) {
   this._init()
 }
 
-TocScrollSpy.prototype._init = function () {
+TocScrollSpy.prototype._init = function() {
   this._collectTitleElementScrollTops()
   this._bindSpy()
   this._bindTitleAndToc()
@@ -24,7 +24,7 @@ TocScrollSpy.prototype._init = function () {
   this._handleScroll.bind(this)()
 }
 
-TocScrollSpy.prototype._collectTitleElementScrollTops = function () {
+TocScrollSpy.prototype._collectTitleElementScrollTops = function() {
   this._elTitlesNames = []
   this.elTitleElements = []
   this.elTitleElementScrollTops = []
@@ -51,7 +51,7 @@ TocScrollSpy.prototype._collectTitleElementScrollTops = function () {
   }
 }
 
-TocScrollSpy.prototype._getElementTop = function (element) {
+TocScrollSpy.prototype._getElementTop = function(element) {
   let actualTop = element.offsetTop
   let current = element.offsetParent
   while (current !== null) {
@@ -61,7 +61,7 @@ TocScrollSpy.prototype._getElementTop = function (element) {
   return actualTop
 }
 
-TocScrollSpy.prototype._getPageScroll = function () {
+TocScrollSpy.prototype._getPageScroll = function() {
   let xScroll, yScroll
   if (self.pageYOffset) {
     yScroll = self.pageYOffset
@@ -75,20 +75,20 @@ TocScrollSpy.prototype._getPageScroll = function () {
     yScroll = document.body.scrollTop
     xScroll = document.body.scrollLeft
   }
-  return {left: xScroll, top: yScroll}
+  return { left: xScroll, top: yScroll }
 }
 
-TocScrollSpy.prototype._bindSpy = function () {
+TocScrollSpy.prototype._bindSpy = function() {
   window.addEventListener('scroll', this._handleScroll.bind(this), false)
 }
 
-TocScrollSpy.prototype._handleScroll = function () {
+TocScrollSpy.prototype._handleScroll = function() {
   // 获取滚动距离
   let windowScrollTop = this._getPageScroll().top
   // 筛选哪个H标签离得近
   let fitDistance = windowScrollTop + this.articleMarginTop
   let distances = []
-  this.elTitleElementScrollTops.map(function (scrollTop, index) {
+  this.elTitleElementScrollTops.map(function(scrollTop, index) {
     // 对数组各个数值求差值
     let distance = scrollTop - fitDistance
     distances.push(Math.abs(distance))
@@ -101,12 +101,12 @@ TocScrollSpy.prototype._handleScroll = function () {
   }
 }
 
-TocScrollSpy.prototype._getCurrentTitleElement = function (index) {
+TocScrollSpy.prototype._getCurrentTitleElement = function(index) {
   if (!this.elTitleElements || index > this.elTitleElements.length - 1) return null
   return this.elTitleElements[index]
 }
 
-TocScrollSpy.prototype._updateTocStatus = function (currentTitleElement) {
+TocScrollSpy.prototype._updateTocStatus = function(currentTitleElement) {
   let activeId = currentTitleElement.id
   let activeTocEl = this.tocElement.querySelector('.' + activeId)
   let activeANode = this.tocElement.querySelector('.active')
@@ -129,12 +129,12 @@ TocScrollSpy.prototype._updateTocStatus = function (currentTitleElement) {
   activeIndicator.style.height = activeAnode.clientHeight + 'px'
 }
 
-TocScrollSpy.prototype._bindTitleAndToc = function () {
+TocScrollSpy.prototype._bindTitleAndToc = function() {
   let that = this
-  this.elTitleElements.map(function (element) {
+  this.elTitleElements.map(function(element) {
     let activeId = element.id
     let activeTocEl = that.tocElement.querySelector('.' + activeId)
-    activeTocEl.addEventListener('click', function () {
+    activeTocEl.addEventListener('click', function() {
       const pageScroll = that._getPageScroll().top
       const toScroll = that._getElementTop(element) - that.articleMarginTop
       const duration = Math.min(Math.abs(toScroll - pageScroll) / window.innerHeight * 500, 1000)

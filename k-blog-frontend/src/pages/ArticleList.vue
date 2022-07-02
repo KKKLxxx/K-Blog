@@ -4,11 +4,12 @@
       <iv-col :xs="24" :sm="24" :md="24" :lg="17">
         <div class="layout-left">
           <section-title :mainTitle="'技术交流'" :subTitle="'整理个人技术栈中的知识点'">
-             <title-menu-filter @filterByMenu="listArticle" slot="menu"></title-menu-filter>
+            <title-menu-filter @filterByMenu="listArticle" slot="menu"></title-menu-filter>
           </section-title>
           <article-list-cell v-for="article in articleList" :article="article" :key="article.id"></article-list-cell>
-          <iv-page class='mt-10 text-right' :total="total" :current='currentPage' :page-size='pageSize'
-                   @on-change="changePage" @on-page-size-change="changeSize" show-elevator show-total/>
+          <iv-page class="mt-10 text-right" :total="total" :current="currentPage" :page-size="pageSize"
+                   @on-change="changePage" @on-page-size-change="changeSize" show-elevator show-total
+          />
         </div>
       </iv-col>
       <iv-col :xs="0" :sm="0" :md="0" :lg="7">
@@ -34,7 +35,7 @@ export default {
     'section-title': SectionTitle,
     'title-menu-filter': TitleMenuFilter
   },
-  data () {
+  data() {
     return {
       articleList: [],
       currentPage: 1,
@@ -42,13 +43,13 @@ export default {
       total: 0
     }
   },
-  created () {
+  created() {
     let param = {}
     param.latest = true
     this.listArticle(param)
   },
   methods: {
-    listArticle (param) {
+    listArticle(param) {
       let orderBy = {
         articleType: 1001,
         pageSize: this.pageSize,
@@ -59,14 +60,14 @@ export default {
         url: this.$http.adornUrl('/article/list'),
         method: 'get',
         params: this.$http.adornParams(params)
-      }).then(({data}) => {
+      }).then(({ data }) => {
         if (data.result.data !== null && data.status === 0) {
           this.articleList = data.result.data.list
           this.total = data.result.data.total
         }
       })
     },
-    changePage (page) {
+    changePage(page) {
       this.currentPage = page
       this.$router.push({
         path: this.$route.path,
@@ -78,7 +79,7 @@ export default {
       })
       this.listArticle()
     },
-    changeSize (size) {
+    changeSize(size) {
       this.pageSize = size
       this.currentPage = 1
       this.listArticle()

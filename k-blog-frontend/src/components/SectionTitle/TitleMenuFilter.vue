@@ -15,7 +15,7 @@
 
 <script type="text/ecmascript-6">
 export default {
-  data () {
+  data() {
     return {
       menuFilterList: [
         {
@@ -42,21 +42,21 @@ export default {
     }
   },
   computed: {
-    filterList () {
+    filterList() {
       return this.menuFilterList
     }
   },
   methods: {
-    refresh () {
+    refresh() {
       this.$router.go(0)
     },
-    filterByMenu (type) {
+    filterByMenu(type) {
       this.replaceActive(type)
       let param = {}
       param[type] = true
       this.$emit('filterByMenu', param)
     },
-    replaceActive (type) {
+    replaceActive(type) {
       this.menuFilterList.map((menuFilter) => {
         menuFilter.active = menuFilter.type === type
       })

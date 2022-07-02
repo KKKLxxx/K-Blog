@@ -18,24 +18,24 @@
 import Panel from '@/components/Panel'
 
 export default {
-  data () {
+  data() {
     return {
       linkList: []
     }
   },
-  created () {
+  created() {
     this.listLink()
   },
   components: {
     'panel': Panel
   },
   methods: {
-    listLink () {
+    listLink() {
       this.$http({
         url: this.$http.adornUrl('/friend-address/getFriendAddress'),
         method: 'get',
         params: this.$http.adornParams()
-      }).then(({data}) => {
+      }).then(({ data }) => {
         if (data && data.status === 0) {
           this.linkList = data.result.data
           // console.log(JSON.stringify(this.linkList))

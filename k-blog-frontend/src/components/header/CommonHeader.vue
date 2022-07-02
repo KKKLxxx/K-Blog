@@ -9,11 +9,7 @@
 
         <ul id="nav">
           <li>
-            <router-link to="/articleList" class="nav-link"><span class="iconfont icon-icon-test">技术交流</span>
-            </router-link>
-          </li>
-          <li>
-            <router-link to="/life" class="nav-link"><span class="iconfont icon-erjiji">程序人生</span>
+            <router-link to="/categoryList" class="nav-link"><span class="iconfont icon-icon-test">分类</span>
             </router-link>
           </li>
           <li>
@@ -24,18 +20,27 @@
             <router-link to="/article/1" class="nav-link"><span class="iconfont icon-xiaobaicai">关于我</span>
             </router-link>
           </li>
+          <li>
+            <router-link to="/404" class="nav-link"><span class="iconfont icon-erjiji">留言板</span>
+            </router-link>
+          </li>
 
           <li>
             <input
-              type="text" id="search-query-nav" class="search-query" name="keywords"
-              v-model="keywords" @keyup.enter="submit(keywords)"
-              placeholder="在这里可劲搜吧....">
+              id="search-query-nav"
+              v-model="keywords"
+              type="text"
+              class="search-query"
+              name="keywords"
+              placeholder="搜索文章...."
+              @keyup.enter="submit(keywords)"
+            >
           </li>
           <li v-show="manager.id == null">
             <router-link to="/login" class="nav-link" style="color: #E6E61A">登录</router-link>
           </li>
           <li v-show="manager.id != null">
-            <a class="nav-link iconfont" style="color: dodgerblue" @click="logout">{{manager.name}}(点击注销)</a>
+            <a class="nav-link iconfont" style="color: dodgerblue" @click="logout">{{ manager.name }}(点击注销)</a>
           </li>
         </ul>
       </div>
@@ -47,17 +52,17 @@
 <script>
 
 export default {
-  data () {
+  data() {
     return {
       show: true,
       keywords: '',
       manager: {}
     }
   },
-  created () {
+  created() {
     this.keywords = this.$route.query.keywords
   },
-  mounted: function () {
+  mounted: function() {
     let manager = JSON.parse(localStorage.getItem('currentManager'))
     if (manager !== null) {
       this.manager = manager
@@ -70,12 +75,12 @@ export default {
     window.onmousewheel = document.onmousewheel = this.watchScroll
   },
   methods: {
-    logout () {
+    logout() {
       this.$http({
         url: this.$http.adornUrl('/login/noLogin'),
         method: 'get',
         data: this.$https.adornDatas()
-      }).then(({data}) => {
+      }).then(({ data }) => {
         if (data.result.status === -1) {
           this.$Message.error(data.result.error)
         } else {
@@ -83,14 +88,14 @@ export default {
           this.$Message.success('已退出登录')
           // 跳到首页
           window.location.reload()
-          this.$router.push({path: '/'})
+          this.$router.push({ path: '/' })
         }
       })
     },
-    submit (keywords) {
-      this.$router.push({path: '/articles/search', query: {keywords}})
+    submit(keywords) {
+      this.$router.push({ path: '/articles/search', query: { keywords } })
     },
-    watchScroll (e) {
+    watchScroll(e) {
       e = e || window.event
       if (e.wheelDelta) {
         if (e.wheelDelta > 0 && this.show === false) { // 当滑轮向上滚动

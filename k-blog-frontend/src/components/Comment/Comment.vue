@@ -5,7 +5,8 @@
         v-model="inputComment"
         type="textarea"
         :rows="3"
-        :placeholder="placeholders">
+        :placeholder="placeholders"
+      >
       </iv-input>
       <div style="text-align: right;margin-top: 10px">
         <iv-button @click="cancel" style="margin-right: 10px">取消</iv-button>
@@ -15,16 +16,20 @@
 
     <List item-layout="vertical" size="small" :split="false">
       <ListItem v-for="item in commentList" :key="item.id">
-        <li style="margin-left: 0px;" v-show="item !== '' || item.content !== null" @click="showCommentInput(comment,item)">
+        <li style="margin-left: 0px;" v-show="item !== '' || item.content !== null"
+            @click="showCommentInput(comment,item)"
+        >
           <span style="color: #2d9aff">{{ item.nickname }} </span>：{{ item.content }}
-          <a style="margin-left: 30px;"><Icon type="ios-chatbubbles-outline"/>回复</a>
+          <a style="margin-left: 30px;">
+            <Icon type="ios-chatbubbles-outline"/>
+            回复</a>
         </li>
-<!--          <li>
-            <Icon type="ios-calendar-outline"/>
-            {{item.createTime}}
-          </li>-->
-        <div v-if="item.replyComments" class='commentSecond'>
-          <Reply :replyComment="item.replyComments" :comment='item' v-on:showCommentInput="showCommentInput"></Reply>
+        <!--          <li>
+                    <Icon type="ios-calendar-outline"/>
+                    {{item.createTime}}
+                  </li>-->
+        <div v-if="item.replyComments" class="commentSecond">
+          <Reply :replyComment="item.replyComments" :comment="item" v-on:showCommentInput="showCommentInput"></Reply>
         </div>
       </ListItem>
     </List>
@@ -45,7 +50,7 @@ export default {
     commentList: Array,
     postId: Number
   },
-  data () {
+  data() {
     return {
       inputComment: '', // 评论内容
       placeholders: '写下你的评论', // 输入框默认内容
@@ -56,7 +61,7 @@ export default {
     /**
      * 点击取消按钮
      */
-    cancel () {
+    cancel() {
       this.inputComment = ''
       this.placeholders = '写下你的评论'
       this.fromId = null
@@ -64,7 +69,7 @@ export default {
     /**
      * 提交评论
      */
-    async commitComment () {
+    async commitComment() {
       const manager = JSON.parse(localStorage.getItem('currentManager'))
       var nickname = ''
       var byManagerId = null
@@ -84,7 +89,7 @@ export default {
       }
     },
 
-    commitComment2 (nickname, byManagerId) {
+    commitComment2(nickname, byManagerId) {
       if (!this.inputComment.trim()) {
         this.$Message.warning('评论信息不能为空！')
       } else {
@@ -99,7 +104,7 @@ export default {
           url: this.$http.adornUrl('/comment/save'),
           method: 'post',
           data: this.$https.adornDatas(comment)
-        }).then(({data}) => {
+        }).then(({ data }) => {
           if (data.result.status === -1) {
             this.$Message.error(data.result.error)
           } else {
@@ -116,7 +121,7 @@ export default {
      * item: 当前大评论
      * reply: 当前回复的评论
      */
-    showCommentInput (item, reply) {
+    showCommentInput(item, reply) {
       if (reply) {
         this.placeholders = '@' + reply.nickname + ' '
       } else {

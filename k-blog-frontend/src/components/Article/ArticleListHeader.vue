@@ -11,7 +11,7 @@ import SectionTitle from '@/components/SectionTitle/SectionTitle'
 import TitleMenuFilter from '@/components/SectionTitle/TitleMenuFilter'
 
 export default {
-  data () {
+  data() {
     return {
       categoryParam: {}
     }
@@ -27,10 +27,10 @@ export default {
     subTitle: ''
   },
   methods: {
-    filterByMenu (params) {
+    filterByMenu(params) {
       this.$emit('filterByMenu', params)
     },
-    filterByCategory (params) {
+    filterByCategory(params) {
       this.$emit('filterByCategory', params)
     }
   }

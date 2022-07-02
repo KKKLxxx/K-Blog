@@ -6,13 +6,15 @@
         <iv-card class="ivu-card ivu-card-bordered"
                  style="margin-bottom: 10px; cursor: pointer;background-color: #f5f5f5;width: 830px"
                  v-for="article in articleList"
-                 :key="article.id">
+                 :key="article.id"
+        >
           <div class="ivu-row">
             <a v-bind:href="['/article/'+ article.id]">
               <div class="ivu-col ivu-col-span-7">
                 <!--<div class="live-cover" style="background-image:'url('+ article.articleHeadPic +')"></div>-->
                 <div class="live-cover"
-                     :style="{background: 'url('+article.headPic+')',backgroundPosition:'center center ',backgroundSize:'cover'}"></div>
+                     :style="{background: 'url('+article.headPic+')',backgroundPosition:'center center ',backgroundSize:'cover'}"
+                ></div>
               </div>
               <div class="ivu-col ivu-col-span-15">
                 <div class="live-info">
@@ -37,8 +39,9 @@
             </a>
           </div>
         </iv-card>
-        <iv-page class='mt-10 text-right' :total="total" :current='currentPage' :page-size='pageSize'
-                 @on-change="changePage" @on-page-size-change="changeSize" show-elevator show-total/>
+        <iv-page class="mt-10 text-right" :total="total" :current="currentPage" :page-size="pageSize"
+                 @on-change="changePage" @on-page-size-change="changeSize" show-elevator show-total
+        />
       </iv-col>
       <iv-col :xs="0" :sm="0" :md="0" :lg="7">
         <div class="layout-right">
@@ -57,7 +60,7 @@ import Recommend from '@/components/Recommend'
 import SectionTitle from '@/components/SectionTitle/SectionTitle'
 
 export default {
-  data () {
+  data() {
     return {
       articleList: [],
       currentPage: 1,
@@ -66,18 +69,18 @@ export default {
       keywords: ''
     }
   },
-  created () {
+  created() {
     this.listSearchArticle()
   },
   watch: {
-    '$route.query.keywords': function (val, old) {
+    '$route.query.keywords': function(val, old) {
       if (val !== old) {
         this.listSearchArticle()
       }
     }
   },
   methods: {
-    listSearchArticle () {
+    listSearchArticle() {
       this.keywords = this.$route.query.keywords
       this.$http({
         url: this.$http.adornUrl('/article/search'),
@@ -87,7 +90,7 @@ export default {
           currentPage: this.currentPage,
           pageSize: this.pageSize
         })
-      }).then(({data}) => {
+      }).then(({ data }) => {
         if (data && data.status === 0) {
           if (data.result.data !== null) {
             this.articleList = data.result.data.pageList
@@ -100,7 +103,7 @@ export default {
       })
     },
 
-    changePage (page) {
+    changePage(page) {
       this.currentPage = page
       this.$router.push({
         path: this.$route.path,
@@ -112,7 +115,7 @@ export default {
       })
       this.listArticle()
     },
-    changeSize (size) {
+    changeSize(size) {
       this.pageSize = size
       this.currentPage = 1
       this.listArticle()

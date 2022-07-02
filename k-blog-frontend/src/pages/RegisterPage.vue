@@ -5,7 +5,8 @@
         <div class="dev-sign-main ivu-card ivu-card-dis-hover ivu-card-shadow"><!----> <!---->
           <div class="ivu-card-body">
             <iv-form autocomplete="off" class="ivu-form ivu-form-label-top" ref="registForm" :model="form"
-                     @keydown.enter.native="handleSubmit">
+                     @keydown.enter.native="handleSubmit"
+            >
 
               <div class="ivu-form-item ivu-form-item-required ivu-form-item-error">
                 <label class="ivu-form-item-label">昵称</label>
@@ -81,7 +82,7 @@
 
 export default {
   name: 'registForm',
-  data () {
+  data() {
     return {
       form: {
         userName: '',
@@ -92,7 +93,7 @@ export default {
     }
   },
   computed: {
-    rules () {
+    rules() {
       return {
         userName: this.form.userNameRules,
         password: this.form.passwordRules,
@@ -102,7 +103,7 @@ export default {
     }
   },
   methods: {
-    ToEmail () {
+    ToEmail() {
       // alert("请注意去你的邮箱查收验证码哦");
       if (this.form.userName === null || this.form.userName === '') {
         this.$Message.error('请填写你的邮箱哦！')
@@ -116,7 +117,7 @@ export default {
         url: this.$http.adornUrl('/login/sendOutEmail'),
         method: 'post',
         data: this.$https.adornDatas(params)
-      }).then(({data}) => {
+      }).then(({ data }) => {
         //console.log(JSON.stringify(data))
         if (data && data.code === 0) {
           this.articleList = data.data.list
@@ -124,7 +125,7 @@ export default {
         }
       })
     },
-    regist () {
+    regist() {
       // alert("请注意去你的邮箱查收验证码哦");
       if (this.form.userName === null || this.form.userName === '') {
         this.$Message.error('请输入你的邮箱哦！')
@@ -148,7 +149,7 @@ export default {
         url: this.$http.adornUrl('/register'),
         method: 'post',
         data: this.$https.adornDatas(params)
-      }).then(({data}) => {
+      }).then(({ data }) => {
         console.log(JSON.stringify(data))
         if (data && data.status === 0) {
           this.$Message.success('注册成功，请移步登录页面登录！')
@@ -158,7 +159,7 @@ export default {
       })
     },
 
-    handleSubmit () {
+    handleSubmit() {
       this.$refs.registForm.validate((valid) => {
         if (valid) {
           this.$emit('on-success-valid', {

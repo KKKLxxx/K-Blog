@@ -16,7 +16,7 @@ export default {
     'article-pay': Pay,
     'Comment': Comment
   },
-  data () {
+  data() {
     return {}
   },
   props: {
@@ -25,7 +25,7 @@ export default {
     commentList: Array
   },
   methods: {
-    showCommentById () {
+    showCommentById() {
       this.$emit('on-comment', this.postId)
     }
   }

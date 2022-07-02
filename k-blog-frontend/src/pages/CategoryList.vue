@@ -1,11 +1,9 @@
 <template>
-  <div class="article-list-content">
+  <div class="category-list">
     <iv-row>
       <iv-col :xs="24" :sm="24" :md="24" :lg="17">
         <div class="layout-left">
-          <section-title :mainTitle="'程序人生'" :subTitle="'记录个人生活'">
-            <title-menu-filter @filterByMenu="listArticle" slot="menu"></title-menu-filter>
-          </section-title>
+          <section-title :mainTitle="'分类'" :subTitle="'分类'"/>
           <article-list-cell v-for="article in articleList" :article="article" :key="article.id"></article-list-cell>
           <iv-page class="mt-10 text-right" :total="total" :current="currentPage" :page-size="pageSize"
                    @on-change="changePage" @on-page-size-change="changeSize" show-elevator show-total
@@ -26,7 +24,7 @@ import Recommend from '@/components/Recommend'
 import ArticleListCell from '@/components/Article/ArticleListCell'
 import SectionTitle from '@/components/SectionTitle/SectionTitle'
 import TitleMenuFilter from '@/components/SectionTitle/TitleMenuFilter'
-import merge from 'lodash/merge'
+import merge from 'lodash/merge' // 合并对象工具
 
 export default {
   components: {
@@ -40,7 +38,7 @@ export default {
       articleList: [],
       currentPage: 1,
       pageSize: 5,
-      total: 1
+      total: 0
     }
   },
   created() {
@@ -51,7 +49,7 @@ export default {
   methods: {
     listArticle(param) {
       let orderBy = {
-        articleType: 1003,
+        articleType: 1001,
         pageSize: this.pageSize,
         currentPage: this.currentPage
       }
@@ -89,7 +87,7 @@ export default {
 </script>
 
 <style lang="stylus" rel="stylesheet/stylus">
-.article-list-content
+.category-list
   width auto
   min-height calc(100vh - 308px)
   @media only screen and (max-width: 768px)

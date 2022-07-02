@@ -41,7 +41,7 @@ export default {
     article: {
       Type: Object
     }
-  },
+  }
 }
 </script>
 

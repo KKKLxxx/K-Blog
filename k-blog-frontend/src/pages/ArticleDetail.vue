@@ -6,11 +6,13 @@
           <article-page-header :article="article"></article-page-header>
           <article-page-content>
             <article id="article-main-page" class="typo container" slot="content" ref="article"
-                     v-html="article.articleContent">
+                     v-html="article.articleContent"
+            >
             </article>
           </article-page-content>
           <article-page-footer :tags="tags" :postId="this.article.id" :commentList="commentList"
-                               @on-comment="showCommentById"></article-page-footer>
+                               @on-comment="showCommentById"
+          ></article-page-footer>
         </div>
       </iv-col>
 
@@ -50,20 +52,20 @@ export default {
     'recommend': Recommend,
     'side-toc': SideToc
   },
-  data () {
+  data() {
     return {
       article: {},
       tags: [],
       commentList: []
     }
   },
-  created: function () {
+  created: function() {
     this.getArticle(this.$route.params.articleId)
     this.showCommentById(this.$route.params.articleId)
   },
   // 监听路由id是否发生变化，变化就重新请求
   watch: {
-    '$route.params.articleId': function (val, old) {
+    '$route.params.articleId': function(val, old) {
       if (val !== old) {
         this.tags = []
         this.getArticle(val)
@@ -72,7 +74,7 @@ export default {
     }
   },
   methods: {
-    addCodeLineNumber () {
+    addCodeLineNumber() {
       // 添加行号
       let blocks = this.$refs.article.querySelectorAll('pre code')
       blocks.forEach((block) => {
@@ -81,11 +83,11 @@ export default {
         block.innerHTML = '<ul><li>' + block.innerHTML.replace(/(^\s*)|(\s*$)/g, '').replace(/\n/g, '\n</li><li>') + '\n</li></ul>'
       })
     },
-    getArticle (articleId) {
+    getArticle(articleId) {
       this.$http({
         url: this.$http.adornUrl('/article/' + articleId),
         method: 'get'
-      }).then(({data}) => {
+      }).then(({ data }) => {
         if (data && data.status === 0) {
           this.article = data.result.data
           let articleTags = this.article.articleTag.split(',')
@@ -95,7 +97,7 @@ export default {
             }
           }
           // 更新目录、高亮代码
-          this.$nextTick(function () {
+          this.$nextTick(function() {
             this.addCodeLineNumber()
             this.refreshDiectory() // 这个就是更新渲染目录
             document.title = this.article.articleName
@@ -104,11 +106,11 @@ export default {
       })
     },
     // 根据id查询该博客的评论信息
-    showCommentById (articleId) {
+    showCommentById(articleId) {
       this.$http({
         url: this.$http.adornUrl('/comment/' + articleId),
         method: 'get'
-      }).then(({data}) => {
+      }).then(({ data }) => {
         if (data) {
           this.commentList = data.result.data
         } else {
@@ -116,7 +118,7 @@ export default {
         }
       })
     },
-    refreshDiectory () {
+    refreshDiectory() {
       /* eslint-disable*/
       new TOC('article-main-page', {
         'level': 8,
