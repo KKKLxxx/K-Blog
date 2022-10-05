@@ -20,7 +20,6 @@ export default {
   },
   props: {
     postId: Number,
-    tags: Array,
     commentList: Array
   },
   methods: {

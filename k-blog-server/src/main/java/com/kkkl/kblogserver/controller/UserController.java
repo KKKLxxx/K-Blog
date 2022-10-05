@@ -21,6 +21,6 @@ public class UserController {
     @GetMapping("/get")
     public HashMap<String, Object> getAllUser() {
         List<User> users = userMapper.selectList(null);
-        return ResultFormat.formatResult(0, users);
+        return ResultFormat.formatResult(users);
     }
 }

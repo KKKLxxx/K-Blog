@@ -7,3 +7,11 @@ export function getAll(params) {
     params
   })
 }
+
+export function getDetail(params) {
+  return request({
+    url: '/article/getDetail',
+    method: 'get',
+    params
+  })
+}

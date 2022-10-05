@@ -22,6 +22,6 @@ public class CategoryController {
     @GetMapping("/getAll")
     public HashMap<String, Object> getAll() {
         List<Category> categories = categoryService.getAll();
-        return ResultFormat.formatResult(0, categories);
+        return ResultFormat.formatResult(categories);
     }
 }

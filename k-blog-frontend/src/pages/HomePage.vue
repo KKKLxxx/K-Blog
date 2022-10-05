@@ -62,9 +62,9 @@ export default {
   methods: {
     refreshArticle(param) {
       const params = merge(param, this.pageParam)
-      getAll(params).then(response => {
-        this.articleList = response.data.records
-        this.total = response.data.total
+      getAll(params).then(({ data }) => {
+        this.articleList = data.records
+        this.total = data.total
       })
     },
     changePage(page) {

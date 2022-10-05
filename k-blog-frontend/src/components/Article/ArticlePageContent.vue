@@ -1,11 +1,25 @@
 <template>
-  <div id="article-page-content">
-    <slot name="content"></slot>
-  </div>
+<!--  强制刷新组件：https://kalacloud.com/blog/how-to-force-vue-to-re-render-component/#v-if-%E6%96%B9%E6%B3%95 -->
+  <viewer v-if="content" :initialValue="content" height="500px" />
 </template>
 
-<script type="text/ecmascript-6">
+<script>
+// tui使用指南：https://github.com/nhn/tui.editor/tree/master/apps/vue-editor
+import '@toast-ui/editor/dist/toastui-editor-viewer.css'
+import { Viewer } from '@toast-ui/vue-editor'
 
+export default {
+  components: {
+    viewer: Viewer
+  },
+  props: {
+    content: undefined
+  },
+  data() {
+    return {
+    }
+  }
+}
 </script>
 
 <style lang="stylus" rel="stylesheet/stylus">

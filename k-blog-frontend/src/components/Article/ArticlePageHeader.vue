@@ -10,8 +10,8 @@
       </iv-col>
       <iv-col :xs="24" :sm="14" :md="14" :lg="14" style="padding-left: 0;padding-right: 0;">
         <p class="operate_info">
-          <span><iv-icon type="md-eye" size="18" />阅读 {{ 10 }}</span>
-          <span class="like"><a @click="likePost(article)"><iv-icon type="md-thumbs-up" size="19" /></a>点赞 10</span>
+          <span><iv-icon type="md-eye" size="18" />阅读 {{ article.readNum }}</span>
+          <span class="like"><a @click="likePost(article)"><iv-icon type="md-thumbs-up" size="19" /></a>点赞 {{ article.likeNum }}</span>
         </p>
       </iv-col>
     </iv-row>
@@ -45,7 +45,7 @@ export default {
       })
     }
   },
-  mounted: function() {
+  mounted() {
     let manager = JSON.parse(localStorage.getItem('currentManager'))
     if (manager !== null) {
       this.manager = manager
