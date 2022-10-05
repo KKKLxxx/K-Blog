@@ -8,7 +8,7 @@ import ArticleList from '@/pages/ArticleList'
 import CategoryList from '@/pages/CategoryList'
 import LifeList from '@/pages/LifeList'
 import TimeLinePage from '@/pages/TimeLinePage'
-import page404 from '@/components/404/page404'
+import page404 from '@/pages/404Page'
 import SearchPage from '@/pages/SearchPage'
 import LoginPage from '@/pages/LoginPage'
 import RegisterPage from '@/pages/RegisterPage'
@@ -21,7 +21,7 @@ const router = new Router({
     {
       path: '/404',
       component: page404,
-      name: 'page404'
+      name: '404'
     },
     {
       path: '/',

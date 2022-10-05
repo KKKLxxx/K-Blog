@@ -14,14 +14,18 @@
               </div>
               <div class="live-down">
                 <div class="live-down-left">
+                  <router-link :to="'/category/' + article.categoryId" class="iconfont icon-icon-test">
+                    {{ article.categoryName }}
+                  </router-link>
                 </div>
                 <div class="live-down-right">
                   <div class="live-name">
-                    <iv-icon type="ios-contact" class="icon"/>
+                    <iv-icon type="ios-person" size="18" />
                     KKKL
                   </div>
+                  <Icon type="person"></Icon>
                   <div class="live-time">
-                    <iv-icon type="ios-timer-outline" class="icon"/>
+                    <iv-icon type="ios-time-outline" size="14" />
                     {{ article.createTime }}
                   </div>
                 </div>
@@ -74,8 +78,7 @@ export default {
 }
 
 .live-title {
-  font-size: 16px;
-  font-weight: 700;
+  font-size: 20px;
   margin-left: 5px;
 }
 
@@ -83,13 +86,13 @@ export default {
   color: #9ea7b4;
   margin-top: 20px;
   line-height: 20px;
-  margin-left: 5px;
+  margin-left: 6px;
 }
 
 .live-down-left {
   margin-top: 20px;
-  float: left;
-  width: 200px;
+  margin-left 15px
+  font-size 18px
 }
 
 .live-for {
@@ -103,19 +106,14 @@ export default {
 }
 
 .live-name {
-  width: 200px;
   font-size: 15px;
+  text-align bottom
 }
 
 .live-time {
+  margin-left 2px
   color: #9ea7b4;
-  width: 200px;
-  margin-top: 5px;
-  font-size: 10px;
-  line-height: 20px;
+  font-size: 12px;
 }
 
-.icon {
-  margin-right: 10px;
-}
 </style>

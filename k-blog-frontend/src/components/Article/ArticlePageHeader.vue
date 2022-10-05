@@ -4,14 +4,14 @@
     <iv-row>
       <iv-col :xs="24" :sm="10" :md="10" :lg="10" style="padding-left: 0;padding-right: 0;">
         <p class="info">
-          <span class="author"><iv-icon type="ios-contact" class="icon"/>KKKL</span>
-          <span class="publish-time"><iv-icon type="ios-timer-outline" class="icon"/>{{ article.createTime }}</span>
+          <span class="author"><iv-icon type="ios-person" size="18" />KKKL</span>
+          <span class="publish-time"><iv-icon type="ios-time-outline" size="14" />{{ article.createTime }}</span>
         </p>
       </iv-col>
       <iv-col :xs="24" :sm="14" :md="14" :lg="14" style="padding-left: 0;padding-right: 0;">
         <p class="operate_info">
-          <span><a><iv-icon type="eye"></iv-icon>{{ article.readNum }} 阅读</a></span>
-          <!--<span><a @click="likePost(article)"><iv-icon type="eye"></iv-icon> 点赞</a></span>-->
+          <span><iv-icon type="md-eye" size="18" />阅读 {{ 10 }}</span>
+          <span class="like"><a @click="likePost(article)"><iv-icon type="md-thumbs-up" size="19" /></a>点赞 10</span>
         </p>
       </iv-col>
     </iv-row>
@@ -137,7 +137,18 @@ export default {
       margin-top 15px
       line-height 28px
 
-.icon {
-  margin-right: 5px;
+.like {
+  a:link {
+    color:#000000;
+  }  /* 未访问链接*/
+  a:visited {
+    color:#00FF00;
+  }  /* 已访问链接 */
+  a:hover {
+    color:#FF00FF;
+  }  /* 鼠标移动到链接上 */
+  a:active {
+    color:#0000FF;
+  }  /* 鼠标点击时 */
 }
 </style>

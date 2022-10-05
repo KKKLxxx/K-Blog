@@ -55,25 +55,6 @@
           </div>
         </div>
       </iv-col>
-      <!-- <vue-particles
-        color="#409EFF"
-        :particleOpacity="0.7"
-        :particlesNumber="60"
-        shapeType="circle"
-        :particleSize="4"
-        linesColor="#409EFF"
-        :linesWidth="1"
-        :lineLinked="true"
-        :lineOpacity="0.4"
-        :linesDistance="150"
-        :moveSpeed="2"
-        :hoverEffect="true"
-        hoverMode="grab"
-        :clickEffect="true"
-        clickMode="push"
-        class="lizi"
-      >
-      </vue-particles> -->
     </iv-row>
   </div>
 </template>
@@ -201,13 +182,6 @@ export default {
     @media screen and (min-width: 1200px)
       padding 0 10px
 
-/*.live-bg{
-  background-image:url({{this.imgUrl}})
-}*/
-
-element.style {
-}
-
 .dev-sign-main {
   width: 400px;
   margin: 50px auto;
@@ -224,85 +198,5 @@ element.style {
   font-size: 14px;
   position: relative;
   transition: all .2s ease-in-out;
-}
-
-article, aside, blockquote, body, button, dd, details, div, dl, dt, fieldset, figcaption, figure, footer, form, h1, h2, h3, h4, h5, h6, header, hgroup, hr, iv-input, legend, li, menu, nav, ol, p, section, td, textarea, th, ul {
-  margin: 0;
-  padding: 0;
-}
-
-*, :after, :before {
-  box-sizing: border-box;
-}
-
-* {
-  -webkit-tap-highlight-color: transparent;
-}
-
-user agent stylesheet
-div {
-  display: block;
-}
-
-* {
-  -webkit-tap-highlight-color: transparent;
-}
-
-* {
-  -webkit-tap-highlight-color: transparent;
-}
-
-* {
-  -webkit-tap-highlight-color: transparent;
-}
-
-* {
-  -webkit-tap-highlight-color: transparent;
-}
-
-body {
-  font-family: Helvetica Neue, Helvetica, PingFang SC, Hiragino Sans GB, Microsoft YaHei, \\5FAE\8F6F\96C5\9ED1, Arial, sans-serif;
-  font-size: 12px;
-  line-height: 1.5;
-  color: #515a6e;
-  background-color: #fff;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-}
-
-* {
-  -webkit-tap-highlight-color: transparent;
-}
-
-html {
-  font-family: sans-serif;
-  line-height: 1.15;
-  -ms-text-size-adjust: 100%;
-  -webkit-text-size-adjust: 100%;
-}
-
-* {
-  -webkit-tap-highlight-color: transparent;
-}
-
-*, :after, :before {
-  box-sizing: border-box;
-}
-
-*, :after, :before {
-  box-sizing: border-box;
-}
-
-.lizi {
-  position: absolute;
-  top: 0;
-  left: 0;
-  height: calc(100VH - 66px);
-  width: 100VW;
-  z-index: -1;
-}
-
-html, body {
-  width: 100%;
 }
 </style>

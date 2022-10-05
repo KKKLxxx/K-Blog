@@ -3,7 +3,6 @@
     <article-pay></article-pay>
     <Comment :commentList="commentList" :postId="postId" @on-comment="showCommentById"></Comment>
     <br/>
-    <br/>
   </div>
 </template>
 

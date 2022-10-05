@@ -10,21 +10,19 @@
           <div>
             <div slot="title" class="tit">微信打赏</div>
             <iv-button type="text" class="btn">
-              <img src="src/assets/weChatpay.png" alt="">
+              <img src="@/assets/weChatpay.png" alt="">
             </iv-button>
           </div>
           <div>
             <div slot="title" style="margin-left: 30px">支付宝打赏</div>
             <iv-button type="text" class="btn" style="margin-left: 30px">
-              <img src="src/assets/alipay.jpg" alt="">
+              <img src="@/assets/alipay.jpg" alt="">
             </iv-button>
           </div>
         </div>
 
       </iv-poptip>
     </div>
-    <br>
-    <span>多谢小爷打赏</span>
   </div>
 </template>
 
