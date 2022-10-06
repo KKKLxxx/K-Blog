@@ -4,9 +4,9 @@ import { LoadingBar } from 'iview'
 import Index from '@/pages/Index'
 import HomePage from '@/pages/HomePage'
 import ArticleDetail from '@/pages/ArticleDetail'
-import ArticleList from '@/pages/ArticleList'
+import ArticleList from '@/components/Article/ArticleList'
+import FilteredArticleList from '@/pages/FilteredArticleList'
 import CategoryList from '@/pages/CategoryList'
-import LifeList from '@/pages/LifeList'
 import TimeLinePage from '@/pages/TimeLinePage'
 import page404 from '@/pages/404Page'
 import SearchPage from '@/pages/SearchPage'
@@ -34,7 +34,7 @@ const router = new Router({
           name: 'index',
           component: HomePage
         },
-        // 登录页
+        // 登录
         {
           path: '/login',
           name: 'login',
@@ -58,23 +58,23 @@ const router = new Router({
           name: 'categoryList',
           component: CategoryList
         },
-        // 文章详情页
+        // 分类文章
+        {
+          path: '/category/:categoryId',
+          name: 'categoryArticleList',
+          component: FilteredArticleList
+        },
+        // 文章详情
         {
           path: '/article/:articleId',
           name: 'article',
           component: ArticleDetail
         },
-        // 文章查询页
+        // 文章查询
         {
           path: '/articles/search',
           name: 'search',
           component: SearchPage
-        },
-        // 程序人生
-        {
-          path: '/life',
-          name: 'life',
-          component: LifeList
         },
         // 时间线
         {

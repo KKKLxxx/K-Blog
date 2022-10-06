@@ -3,7 +3,7 @@
     <a>
       <iv-card class="ivu">
         <div class="ivu-row">
-          <router-link :to="'/category/' + category.id" target="_blank">
+          <router-link :to="{ name: 'categoryArticleList', params: {categoryId: category.id}, query: {mainTitle: '分类文章', categoryName: category.name} }" target="_blank">
             <div class="ivu-col">
               <img class="live-cover" :src="category.cover">
             </div>

@@ -3,17 +3,18 @@
     <iv-row>
       <iv-col :xs="24" :sm="24" :md="24" :lg="17">
         <div class="layout-left">
-          <section-title :mainTitle="'分类'" :subTitle="'分类'"/>
+          <section-title :mainTitle="'分类'" :subTitle="'Category'"/>
           <iv-row>
             <iv-col v-for="category in categoryList" :key="category.id" span="8">
-              <category-list-cell class="cell" :category="category"></category-list-cell>
+              <category-list-cell class="cell" :category="category"/>
             </iv-col>
           </iv-row>
         </div>
       </iv-col>
+
       <iv-col :xs="0" :sm="0" :md="0" :lg="7">
         <div class="layout-right">
-          <recommend></recommend>
+          <recommend />
         </div>
       </iv-col>
     </iv-row>
@@ -34,33 +35,16 @@ export default {
   },
   data() {
     return {
-      categoryList: [
-        {
-          id: 1,
-          name: '哈哈',
-          count: 1
-        },
-        {
-          id: 2,
-          name: '呵呵',
-          count: 1
-        },
-        {
-          id: 3,
-          name: '呃呃',
-          count: 1
-        }
-      ]
+      categoryList: []
     }
   },
   created() {
-    this.listArticle()
+    this.getCategories()
   },
   methods: {
-    listArticle() {
-      getAll().then(response => {
-        console.log(response)
-        this.categoryList = response.data
+    getCategories() {
+      getAll().then(({ data }) => {
+        this.categoryList = data
       })
     }
   }

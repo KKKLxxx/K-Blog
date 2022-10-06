@@ -113,12 +113,12 @@ export default {
           currentPage: this.currentPage
         }
       })
-      this.listArticle()
+      this.getCategories()
     },
     changeSize(size) {
       this.pageSize = size
       this.currentPage = 1
-      this.listArticle()
+      this.getCategories()
     }
   },
   components: {
