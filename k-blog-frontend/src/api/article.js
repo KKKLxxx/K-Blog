@@ -8,9 +8,9 @@ export function getAll(params) {
   })
 }
 
-export function getDetail(params) {
+export function getById(params) {
   return request({
-    url: '/article/getDetail',
+    url: '/article/getById',
     method: 'get',
     params
   })

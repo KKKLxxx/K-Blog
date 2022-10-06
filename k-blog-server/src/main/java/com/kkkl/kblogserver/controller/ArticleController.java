@@ -19,15 +19,21 @@ public class ArticleController {
     @Autowired
     private ArticleService articleService;
 
+    /**
+     * 获取所有文章
+     */
     @GetMapping("/getAll")
     public HashMap<String, Object> getAll(int curPage, int pageSize, @RequestParam(defaultValue = "0") int categoryId) {
         Page<Article> pages = articleService.getAll(curPage, pageSize, categoryId);
         return ResultFormat.formatResult(pages);
     }
 
-    @GetMapping("/getDetail")
-    public HashMap<String, Object> getDetail(int articleId) {
-        Article article = articleService.getDetail(articleId);
+    /**
+     * 根据id获取文章
+     */
+    @GetMapping("/getById")
+    public HashMap<String, Object> getById(int articleId) {
+        Article article = articleService.getById(articleId);
         return ResultFormat.formatResult(article);
     }
 }

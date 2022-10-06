@@ -1,5 +1,5 @@
 <template>
-  <div class="home-content" v-cloak>
+  <div class="home-content">
     <iv-row>
       <iv-col :xs="24" :sm="24" :md="24" :lg="17">
         <div class="layout-left" style="background-color: #fff;padding:30px 20px 10px 20px">
@@ -11,7 +11,7 @@
 
       <iv-col :xs="0" :sm="0" :md="0" :lg="7">
         <div class="layout-right">
-          <recommend></recommend> <!-- 这里是引入推荐阅读 -->
+          <recommend/>
         </div>
       </iv-col>
     </iv-row>
@@ -23,7 +23,7 @@ import ArticlePageHeader from '@/components/Article/ArticlePageHeader'
 import ArticlePageContent from '@/components/Article/ArticlePageContent'
 import ArticlePageFooter from '@/components/Article/ArticlePageFooter'
 import Recommend from '@/components/Recommend'
-import { getDetail } from '@/api/article'
+import { getById } from '@/api/article'
 
 export default {
   components: {
@@ -39,32 +39,14 @@ export default {
     }
   },
   created() {
-    console.log('1-1')
     this.getArticle(this.$route.params.articleId)
-    console.log(this.article)
-    console.log(this.article.content)
-    console.log('1-2')
     this.showCommentById(this.$route.params.articleId)
   },
-  // 监听路由id是否发生变化，变化就重新请求
-  /* watch: {
-    '$route.params.articleId': function(val, old) {
-      if (val !== old) {
-        this.tags = []
-        this.getArticle(val)
-        this.showCommentById(val)
-      }
-    }
-  }, */
   methods: {
     getArticle(articleId) {
       const params = { 'articleId': articleId }
-      getDetail(params).then(({ data }) => {
-        console.log('4-1')
+      getById(params).then(({ data }) => {
         this.article = data
-        console.log('4-2')
-        console.log(this.article)
-        console.log(this.article.content)
       })
     },
     // 根据id查询该博客的评论信息
@@ -84,7 +66,7 @@ export default {
 }
 </script>
 
-<style lang="stylus" rel="stylesheet/stylus">
+<!--<style lang="stylus" rel="stylesheet/stylus">
 .home-content
   width auto
   min-height calc(100vh - 108px)
@@ -110,4 +92,4 @@ export default {
     @media screen and (min-width: 1200px)
       padding 0 10px
 
-</style>
+</style>-->

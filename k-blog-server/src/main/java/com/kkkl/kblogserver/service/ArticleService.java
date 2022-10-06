@@ -44,7 +44,7 @@ public class ArticleService {
         return pages;
     }
 
-    public Article getDetail(int articleId) {
+    public Article getById(int articleId) {
         return articleMapper.selectById(articleId);
     }
 }

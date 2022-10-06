@@ -1,6 +1,6 @@
 <template>
 <!--  强制刷新组件：https://kalacloud.com/blog/how-to-force-vue-to-re-render-component/#v-if-%E6%96%B9%E6%B3%95 -->
-  <viewer v-if="content" :initialValue="content" height="500px" />
+  <viewer v-if="content" :initialValue="content"  />
 </template>
 
 <script>
@@ -14,17 +14,15 @@ export default {
   },
   props: {
     content: undefined
-  },
-  data() {
-    return {
-    }
   }
 }
 </script>
 
+<!--
 <style lang="stylus" rel="stylesheet/stylus">
 @import "../../common/stylus/article.styl";
 
 #article-page-content
-  padding 5px
+  padding 55px
 </style>
+-->
