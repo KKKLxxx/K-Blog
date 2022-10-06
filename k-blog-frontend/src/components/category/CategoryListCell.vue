@@ -1,23 +1,19 @@
 <template>
-  <div>
-    <a>
-      <iv-card class="ivu">
-        <div class="ivu-row">
-          <router-link :to="{ name: 'categoryArticleList', params: {categoryId: category.id}, query: {mainTitle: '分类文章', categoryName: category.name} }" target="_blank">
-            <div class="ivu-col">
-              <img class="live-cover" :src="category.cover">
-            </div>
-            <div class="ivu-col">
-              <div class="live-info">
-                <div class="live-title">{{ category.name }}</div>
-                <div class="live-desc">共 {{ category.total }} 篇</div>
-              </div>
-            </div>
-          </router-link>
+  <a>
+    <iv-card class="ivu">
+      <router-link :to="{ name: 'categoryArticleList', params: {categoryId: category.id}, query: {mainTitle: '分类文章', categoryName: category.name} }" target="_blank">
+        <div class="ivu-col">
+          <img class="live-cover" :src="category.cover">
         </div>
-      </iv-card>
-    </a>
-  </div>
+        <div class="ivu-col">
+          <div class="live-info">
+            <div class="live-title">{{ category.name }}</div>
+            <div class="live-desc">共 {{ category.total }} 篇</div>
+          </div>
+        </div>
+      </router-link>
+    </iv-card>
+  </a>
 </template>
 
 <script type="text/ecmascript-6">

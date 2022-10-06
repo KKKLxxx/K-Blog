@@ -16,9 +16,6 @@ public class Article {
     // 内容
     private String content;
 
-    // 简介
-    private String intro;
-
     // 分类id
     private Integer categoryId;
 
@@ -38,8 +35,4 @@ public class Article {
     // 分类名称
     @TableField(exist = false)
     private String categoryName;
-
-    // 分类封面
-    @TableField(exist = false)
-    private String categoryCover;
 }

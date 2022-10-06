@@ -39,7 +39,6 @@ public class ArticleService {
         for (Article article : pages.getRecords()) {
             Category category = map.get(article.getCategoryId());
             article.setCategoryName(category.getName());
-            article.setCategoryCover(category.getCover());
         }
         return pages;
     }

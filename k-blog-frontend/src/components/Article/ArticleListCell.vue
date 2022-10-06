@@ -1,41 +1,26 @@
 <template>
-  <div>
-    <a>
-      <iv-card class="ivu">
-        <div class="ivu-row">
-          <router-link :to="'/article/' + article.id" target="_blank">
-            <div class="ivu-col ivu-col-span-7">
-              <img class="live-cover" :src="article.categoryCover">
-            </div>
-            <div class="ivu-col ivu-col-span-17">
-              <div class="live-info">
-                <div class="live-title">{{ article.title }}</div>
-                <div class="live-desc">{{ article.intro }}</div>
-              </div>
-              <div class="live-down">
-                <div class="live-down-left">
-                  <router-link :to="'/category/' + article.categoryId" class="iconfont icon-icon-test">
-                    {{ article.categoryName }}
-                  </router-link>
-                </div>
-                <div class="live-down-right">
-                  <div class="live-name">
-                    <iv-icon type="ios-person" size="18" />
-                    KKKL
-                  </div>
-                  <Icon type="person"></Icon>
-                  <div class="live-time">
-                    <iv-icon type="ios-time-outline" size="14" />
-                    {{ article.createTime }}
-                  </div>
-                </div>
-              </div>
-            </div>
+  <router-link :to="'/article/' + article.id" target="_blank">
+    <iv-card class="ivu">
+      <div class="ivu-row">
+        <div class="live-title">{{ article.title }}</div>
+        <div class="live-down-left">
+          <router-link :to="{ name: 'categoryArticleList', params: {categoryId: article.categoryId}, query: {mainTitle: '分类文章', categoryName: article.categoryName} }" class="iconfont icon-icon-test">
+            {{ article.categoryName }}
           </router-link>
         </div>
-      </iv-card>
-    </a>
-  </div>
+        <div class="live-down-right">
+          <div class="live-name">
+            <iv-icon type="ios-person" size="18" />
+            KKKL
+          </div>
+          <div class="live-time">
+            <iv-icon type="ios-time-outline" size="14" />
+            {{ article.createTime }}
+          </div>
+        </div>
+      </div>
+    </iv-card>
+  </router-link>
 </template>
 
 <script>
@@ -65,49 +50,22 @@ export default {
   cursor: pointer;
 }
 
-.live-cover {
-  width: 230px
-  height: 150px;
-  border-radius: 4px;
-}
-
-.live-info {
-  height: 110px;
-  padding: 10px;
-  overflow: hidden;
-}
-
 .live-title {
-  font-size: 20px;
-  margin-left: 5px;
-}
-
-.live-desc {
-  color: #9ea7b4;
-  margin-top: 20px;
-  line-height: 20px;
-  margin-left: 6px;
+  font-size: 25px;
+  margin-left: 20px;
 }
 
 .live-down-left {
-  margin-top: 20px;
-  margin-left 15px
+  margin-left 20px
   font-size 18px
 }
 
-.live-for {
-  float: left;
-  margin-left: 15px;
-}
-
 .live-down-right {
-  width: 50px;
-  margin-left: 400px;
+  margin-left: 620px;
 }
 
 .live-name {
   font-size: 15px;
-  text-align bottom
 }
 
 .live-time {
