@@ -65,31 +65,3 @@ export default {
   }
 }
 </script>
-
-<!--<style lang="stylus" rel="stylesheet/stylus">
-.home-content
-  width auto
-  min-height calc(100vh - 108px)
-  @media only screen and (max-width: 768px)
-    margin 5px 5px 0 5px
-  @media screen and (min-width: 768px)
-    margin 10px 10px 0 10px
-  @media screen and (min-width: 992px)
-    margin 15px 35px 0 35px
-  @media screen and (min-width: 1200px)
-    width 1200px
-    margin 15px auto 0
-    margin-bottom 200px
-
-  .layout-left, .layout-right
-    padding 0
-    @media only screen and (max-width: 768px)
-      padding 0
-    @media screen and (min-width: 768px)
-      padding 0
-    @media screen and (min-width: 992px)
-      padding 0 10px
-    @media screen and (min-width: 1200px)
-      padding 0 10px
-
-</style>-->
