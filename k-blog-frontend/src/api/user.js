@@ -1,5 +1,13 @@
 import request from '@/utils/request'
 
+export function sendRegisterEmail(params) {
+  return request({
+    url: '/user/sendRegisterEmail',
+    method: 'get',
+    params
+  })
+}
+
 export function login(data) {
   return request({
     url: '/vue-admin-template/user/login',

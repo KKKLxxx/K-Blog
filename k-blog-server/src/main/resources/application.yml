@@ -50,3 +50,23 @@ spring:
         #          login-username: admin
         # 登录密码
     #          login-password: admin
+  redis:
+    host: 124.223.73.133
+    port: 63791
+    timeout: 3000
+  mail:
+    username: 1223344454@qq.com
+    password: xovjktduoqmnjggb
+    host: smtp.qq.com
+    #    设置是否需要认证
+    properties:
+      mail:
+        transport:
+          protocol: smtp
+        smtp:
+          host: smtp.qq.com
+          auth: true
+          socketFactory:
+            class: javax.net.ssl.SSLSocketFactory
+            port: 465
+          port: 465

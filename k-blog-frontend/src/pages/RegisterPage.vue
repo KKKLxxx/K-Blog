@@ -2,53 +2,52 @@
   <div class="home-content">
     <iv-row>
       <iv-col :xs="500" :sm="500" :md="500" :lg="500">
-        <div class="dev-sign-main ivu-card ivu-card-dis-hover ivu-card-shadow"><!----> <!---->
+        <div class="dev-sign-main ivu-card ivu-card-dis-hover ivu-card-shadow">
           <div class="ivu-card-body">
-            <iv-form autocomplete="off" class="ivu-form ivu-form-label-top" ref="registForm" :model="form"
-                     @keydown.enter.native="handleSubmit"
-            >
-
+            <iv-form class="ivu-form ivu-form-label-top">
               <div class="ivu-form-item ivu-form-item-required ivu-form-item-error">
                 <label class="ivu-form-item-label">昵称</label>
-                <iv-formItem prop="name"><!----> <!---->
-                  <iv-input type="text" placeholder="起一个拉风的名字吧" v-model="form.name">
-                  </iv-input>
+                <iv-formItem>
+                  <iv-input v-model="username" type="text" placeholder="起一个拉风的名字吧" />
                 </iv-formItem>
               </div>
+
               <div class="ivu-form-item ivu-form-item-required ivu-form-item-error">
                 <label class="ivu-form-item-label">电子邮箱</label>
-                <iv-formItem prop="userName"><!----> <!---->
-                  <iv-input type="text" placeholder="请填写你的电子邮箱" v-model="form.userName">
-                    <iv-button style="height: 30px" slot="append" @click="ToEmail">
+                <iv-formItem>
+                  <iv-input v-model="email" type="text" placeholder="请填写你的电子邮箱">
+                    <iv-button slot="append" style="height: 30px" @click="sendEmail">
                       <div class="iconfont icon-youxiang1" style="margin-top: -10px"></div>
                     </iv-button>
                   </iv-input>
                 </iv-formItem>
               </div>
+
               <div class="ivu-form-item ivu-form-item-required ivu-form-item-error">
                 <label class="ivu-form-item-label">密码</label>
-                <iv-formItem prop="password"><!---->
-                  <iv-input autocomplete="off" type="password" v-model="form.password" placeholder="请输入密码"/>
+                <iv-formItem>
+                  <iv-input v-model="password" autocomplete="off" type="password" placeholder="请输入密码"/>
                 </iv-formItem>
               </div>
+
               <div class="ivu-form-item ivu-form-item-required ivu-form-item-error">
                 <label class="ivu-form-item-label">验证码</label>
-                <iv-formItem prop="code">
-                  <iv-input autocomplete="off" v-model="form.code" placeholder="请输入验证码" style="width: 150px"/>
-                  <a @click="ToEmail" style="margin-left:15px "> 没有收到验证码？再来一条</a>
+                <iv-formItem>
+                  <iv-input v-model="verifyCode" autocomplete="off" placeholder="请输入验证码" style="width: 150px"/>
+                  <a style="margin-left:15px " @click="sendEmail">没有收到验证码？再来一条</a>
                 </iv-formItem>
               </div>
             </iv-form>
+
             <div class="dev-sign-main-aside">
-              <iv-button class="ivu-btn ivu-btn-success ivu-btn-long ivu-btn-large" @click="regist"><!---->
+              <iv-button class="ivu-btn ivu-btn-success ivu-btn-long ivu-btn-large" @click="register">
                 <i class="ivu-icon ivu-icon-md-log-in"></i>
                 <span>注册</span>
               </iv-button>
-              <span class="ivu-input-prefix"> <i class="ivu-icon ivu-icon-ios-mail-outline"></i></span>
+
               <div class="dev-sign-main-aside-tip">
-                <!--<p><a href="/recover" class="">忘记密码？</a></p>-->
                 <p>已有有账户？
-                  <router-link to="/login" class="">登录</router-link>
+                  <router-link to="/login">登录</router-link>
                 </p>
               </div>
             </div>
@@ -60,67 +59,41 @@
 </template>
 
 <script type="text/ecmascript-6">
+import { sendRegisterEmail } from '@/api/user'
 
 export default {
-  name: 'registForm',
   data() {
     return {
-      form: {
-        userName: '',
-        password: '',
-        name: '',
-        code: ''
-      }
-    }
-  },
-  computed: {
-    rules() {
-      return {
-        userName: this.form.userNameRules,
-        password: this.form.passwordRules,
-        code: this.form.codeRules,
-        name: this.form.nameRules
-      }
+      email: '',
+      username: '',
+      password: '',
+      verifyCode: ''
     }
   },
   methods: {
-    ToEmail() {
-      // alert("请注意去你的邮箱查收验证码哦");
-      if (this.form.userName === null || this.form.userName === '') {
-        this.$Message.error('请填写你的邮箱哦！')
+    sendEmail() {
+      if (this.email === null || this.email === '') {
+        this.$Message.error('请填写邮箱')
         return
       }
-      alert('请在你的' + this.form.userName + '的邮箱下查收验证码哦')
-      let params = {
-        username: this.form.userName
-      }
-      this.$http({
-        url: this.$http.adornUrl('/login/sendOutEmail'),
-        method: 'post',
-        data: this.$https.adornDatas(params)
-      }).then(({ data }) => {
-        //console.log(JSON.stringify(data))
-        if (data && data.code === 0) {
-          this.articleList = data.data.list
-          this.total = data.data.total
-        }
-      })
+      const params = { 'email': this.email }
+      sendRegisterEmail(params)
+      this.$Message.info('请在 ' + this.email + ' 邮箱下查收验证码')
     },
-    regist() {
-      // alert("请注意去你的邮箱查收验证码哦");
-      if (this.form.userName === null || this.form.userName === '') {
-        this.$Message.error('请输入你的邮箱哦！')
+    register() {
+      if (this.form.email === null || this.form.email === '') {
+        this.$Message.error('请输入邮箱')
         return
       }
       if (this.form.password === null || this.form.password === '') {
-        this.$Message.error('请输入你的密码哦！')
+        this.$Message.error('请输入密码')
         return
       }
       if (this.form.code === null || this.form.code === '') {
-        this.$Message.error('请输入验证码哦！')
+        this.$Message.error('请输入验证码')
         return
       }
-      let params = {
+      const params = {
         username: this.form.userName,
         password: this.form.password,
         code: this.form.code,
@@ -136,17 +109,6 @@ export default {
           this.$Message.success('注册成功，请移步登录页面登录！')
         } else {
           this.$Message.error(data.errorMsg)
-        }
-      })
-    },
-
-    handleSubmit() {
-      this.$refs.registForm.validate((valid) => {
-        if (valid) {
-          this.$emit('on-success-valid', {
-            userName: this.form.userName,
-            password: this.form.password
-          })
         }
       })
     }
