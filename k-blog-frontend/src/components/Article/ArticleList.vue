@@ -67,7 +67,6 @@ export default {
 <style lang="stylus" rel="stylesheet/stylus">
 .article-list-content
   width auto
-  min-height calc(100vh - 308px)
   @media only screen and (max-width: 768px)
     margin 5px 5px 0 5px
   @media screen and (min-width: 768px)
@@ -90,4 +89,72 @@ export default {
     @media screen and (min-width: 1200px)
       padding 0 10px
 
+.ivu-card, .ivu-card-bordered
+  border 1px solid #dcdee2
+  border-color #e8eaec
+
+.before {
+  box-sizing: border-box;
+}
+
+.live-cover {
+  height: 150px;
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-position: 50%;
+  border-radius: 4px;
+}
+
+.live-info {
+  height: 130px;
+  padding: 10px
+}
+
+.live-title {
+  font-size: 16px;
+  font-weight: 700;
+}
+
+.live-desc {
+  color: #9ea7b4;
+  margin-top: 20px;
+  line-height: 20px
+}
+
+.live-down {
+  margin-top: -10px;
+}
+
+.live-down-left {
+  margin-top: 20px;
+  float: left
+  width: 200px;
+}
+
+.live-for {
+  float: left;
+  margin-left: 15px;
+}
+
+.live-down-right {
+  width: 50px;
+  margin-left: 400px;
+}
+
+.live-name {
+  width: 200px;
+  font-size: 15px;
+}
+
+.live-time {
+  color: #9ea7b4;
+  width: 200px;
+  margin-top: 5px;
+  font-size: 10px;
+  line-height: 20px;
+}
+
+.icon {
+  margin-right: 10px;
+}
 </style>

@@ -9,7 +9,6 @@ import FilteredArticleList from '@/pages/FilteredArticleList'
 import CategoryList from '@/pages/CategoryList'
 import TimeLinePage from '@/pages/TimeLinePage'
 import page404 from '@/pages/404Page'
-import SearchPage from '@/pages/SearchPage'
 import LoginPage from '@/pages/LoginPage'
 import RegisterPage from '@/pages/RegisterPage'
 
@@ -74,7 +73,7 @@ const router = new Router({
         {
           path: '/articles/search',
           name: 'search',
-          component: SearchPage
+          component: FilteredArticleList
         },
         // 时间线
         {
