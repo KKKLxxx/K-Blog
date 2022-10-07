@@ -1,16 +1,14 @@
 <template>
   <div class="panel">
-    <h4>{{ title }}</h4>
-    <slot name="content"></slot>
+    <h3>{{ title }}</h3>
+    <slot name="content" />
   </div>
 </template>
 
 <script type="text/ecmascript-6">
 export default {
   props: {
-    title: {
-      default: ''
-    }
+    title: ''
   }
 }
 </script>
@@ -23,8 +21,8 @@ export default {
   background #fff
   border-left 1px solid $color-border
 
-  h4
-    font-size 18px
+  h3
+    font-size 20px
     padding 13px 20px 13px
     line-height 18px
     text-align left

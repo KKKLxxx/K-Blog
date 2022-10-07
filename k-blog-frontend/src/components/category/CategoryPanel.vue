@@ -42,29 +42,26 @@ export default {
 @import "../../common/stylus/index.styl";
 
 .content
-  padding 5px 20px
+  padding 10px 20px
 
 .top
   a
     padding 4px
     display block
-    margin-top 10px
-    margin-bottom 10px
+    margin-bottom 5px
 
     .name
-      color $color-gradually-gray-21
-      font-size 20px
-      //margin-top 5px
+      color $color-gradually-gray-31
+      font-size 17px
       display inline
 
       .num
         width 40px
         display inline-block
         margin-left 180px
-        padding-left 3px
-        padding-right 3px
-        font-size 16px
-        background-color $color-gradually-gray-81
+        font-size 15px
+        background-color $color-gradually-gray-91
+        text-align center
 
   &:hover
     box-shadow 2px 2px 3px $color-border

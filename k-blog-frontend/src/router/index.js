@@ -37,12 +37,14 @@ const router = new Router({
         {
           path: '/login',
           name: 'login',
+          redirect: '/404',
           component: LoginPage
         },
         // 注册
         {
           path: '/register',
           name: 'register',
+          redirect: '/404',
           component: RegisterPage
         },
         // 全部文章列表
@@ -73,12 +75,14 @@ const router = new Router({
         {
           path: '/articles/search',
           name: 'search',
+          redirect: '/404',
           component: FilteredArticleList
         },
         // 时间线
         {
           path: '/timeline',
           name: 'timeline',
+          redirect: '/404',
           component: TimeLinePage
         },
         {

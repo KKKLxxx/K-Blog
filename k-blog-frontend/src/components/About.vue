@@ -10,11 +10,11 @@
     <div class="line"></div>
     <ul class="social">
       <li>
-        <div style="float: left" class="desc">社交:</div>
+        <div style="float: left" class="desc">社交：</div>
         <iv-poptip trigger="hover" title="QQ：1223344454">
-          <a href="tencent://AddContact/?fromId=50&fromSubId=1&subcmd=all&uin=1223344454" target="_blank"><img
-            src="@/assets/icon/qq.png" alt=""
-          ></a>
+          <a href="tencent://AddContact/?fromId=50&fromSubId=1&subcmd=all&uin=1223344454" target="_blank">
+            <img src="@/assets/icon/qq.png" alt="">
+          </a>
         </iv-poptip>
         <iv-poptip trigger="hover" title="Gitee：KKKLxxx">
           <a href="https://gitee.com/KKKLxxx" target="_blank"><img src="@/assets/icon/gitee.png" alt=""></a>
@@ -107,7 +107,7 @@ export default {
         display inline-block
         width: 44px
         height: 44px
-        margin: auto
+        margin-left: 9px
 
         img
           width 90%
