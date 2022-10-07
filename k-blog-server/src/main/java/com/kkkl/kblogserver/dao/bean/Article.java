@@ -23,15 +23,6 @@ public class Article implements Serializable {
     // 分类id
     private Integer categoryId;
 
-    // 是否推荐，0不推荐，1推荐
-    private Integer recommend;
-
-    // 点赞数
-    private String likeNum;
-
-    // 阅读数
-    private String readNum;
-
     // 创建时间
     @OrderBy
     private String createTime;

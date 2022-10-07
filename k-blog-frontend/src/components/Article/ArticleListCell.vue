@@ -51,7 +51,7 @@ export default {
 }
 
 .live-title {
-  font-size: 25px;
+  font-size: 22px;
   margin-left: 20px;
   color: $color-gradually-gray-41;
 }

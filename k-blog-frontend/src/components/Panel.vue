@@ -22,7 +22,8 @@ export default {
   border-left 1px solid $color-border
 
   h3
-    font-size 20px
+    font-size 21px
+    font-weight bold
     padding 13px 20px 13px
     line-height 18px
     text-align left

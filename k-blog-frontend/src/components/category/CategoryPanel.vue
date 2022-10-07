@@ -46,19 +46,19 @@ export default {
 
 .top
   a
-    padding 4px
+    padding 3px
     display block
-    margin-bottom 5px
+    margin-bottom 3px
 
     .name
-      color $color-gradually-gray-31
-      font-size 17px
+      color $color-gradually-gray-41
+      font-size 16px
       display inline
 
       .num
         width 40px
         display inline-block
-        margin-left 180px
+        float right
         font-size 15px
         background-color $color-gradually-gray-91
         text-align center

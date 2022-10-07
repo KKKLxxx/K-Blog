@@ -5,7 +5,7 @@
     </section-title>
     <article-list-cell v-for="article in articleList" :key="article.id" :article="article" />
     <iv-page :total="total" :current="pageParam.curPage"
-             :page-size="pageParam.pageSize" :page-size-opts="[5, 10, 15, 20]"
+             :page-size="pageParam.pageSize" :page-size-opts="[10, 15, 20]"
              @on-change="changePage" @on-page-size-change="changeSize"
              show-elevator show-total show-sizer />
   </div>
@@ -34,7 +34,7 @@ export default {
       articleList: [],
       total: 0,
       pageParam: {
-        pageSize: 5,
+        pageSize: 10,
         curPage: 1
       }
     }
