@@ -57,6 +57,7 @@ const router = new Router({
         {
           path: '/categoryList',
           name: 'categoryList',
+          redirect: '/404',
           component: CategoryList
         },
         // 分类文章

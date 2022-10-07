@@ -1,19 +1,17 @@
 <template>
-  <a>
-    <iv-card class="ivu">
-      <router-link :to="{ name: 'categoryArticleList', params: {categoryId: category.id}, query: {mainTitle: '分类文章', categoryName: category.name} }" target="_blank">
-        <div class="ivu-col">
-          <img class="live-cover" :src="category.cover">
+  <iv-card class="ivu">
+    <router-link :to="{ name: 'categoryArticleList', params: {categoryId: category.id}, query: {mainTitle: '分类文章', categoryName: category.name} }" target="_blank">
+      <div class="ivu-col">
+        <img class="live-cover" :src="category.cover">
+      </div>
+      <div class="ivu-col">
+        <div class="live-info">
+          <div class="live-title">{{ category.name }}</div>
+          <div class="live-desc">共 {{ category.total }} 篇</div>
         </div>
-        <div class="ivu-col">
-          <div class="live-info">
-            <div class="live-title">{{ category.name }}</div>
-            <div class="live-desc">共 {{ category.total }} 篇</div>
-          </div>
-        </div>
-      </router-link>
-    </iv-card>
-  </a>
+      </div>
+    </router-link>
+  </iv-card>
 </template>
 
 <script type="text/ecmascript-6">
@@ -28,15 +26,6 @@ export default {
 <style lang="stylus" rel="stylesheet/stylus" scoped>
 @import "../../common/stylus/index.styl";
 
-> a
-  display block
-  cursor default
-  border 1px solid $color-border
-
-  &:hover
-    border 1px solid $color-border-hover
-    box-shadow 2px 2px 3px $color-border
-
 .ivu {
   background-color #fff;
   margin-bottom: 10px;
@@ -45,8 +34,8 @@ export default {
 
 .live-cover {
   width: 230px
-  height: 150px;
-  border-radius: 4px;
+  height: 150px
+  overflow: hidden
 }
 
 .live-info {
