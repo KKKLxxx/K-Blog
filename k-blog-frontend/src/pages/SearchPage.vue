@@ -56,7 +56,7 @@
 import ArticlePageContent from '@/components/Article/ArticlePageContent'
 import ArticlePageFooter from '@/components/Article/ArticlePageFooter'
 import ArticleListCell from '@/components/Article/ArticleListCell'
-import Recommend from '@/components/Recommend'
+import Recommend from '@/components/category/CategoryPanel'
 import SectionTitle from '@/components/SectionTitle/SectionTitle'
 
 export default {

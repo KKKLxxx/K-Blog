@@ -53,6 +53,7 @@ export default {
 .live-title {
   font-size: 25px;
   margin-left: 20px;
+  color: $color-gradually-gray-41;
 }
 
 .live-down-left {
@@ -62,6 +63,7 @@ export default {
 
 .live-down-right {
   margin-left: 620px;
+  color: $color-gradually-gray-51;
 }
 
 .live-name {
@@ -70,7 +72,6 @@ export default {
 
 .live-time {
   margin-left 2px
-  color: #9ea7b4;
   font-size: 12px;
 }
 

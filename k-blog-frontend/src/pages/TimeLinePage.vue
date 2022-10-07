@@ -27,7 +27,7 @@
 import TimeLineHeader from '@/components/TimeLine/TimeLineHeader'
 import ArchiveListCell from '@/components/TimeLine/ArchiveListCell'
 import ArchiveListTimeTitle from '@/components/TimeLine/ArchiveListTimeTitle'
-import Recommend from '@/components/Recommend'
+import Recommend from '@/components/category/CategoryPanel'
 
 export default {
   data() {

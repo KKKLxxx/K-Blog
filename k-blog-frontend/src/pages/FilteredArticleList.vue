@@ -20,7 +20,7 @@
 <script type="text/ecmascript-6">
 import ArticleList from '@/components/Article/ArticleList'
 import FriendLinks from '@/components/FriendLinks'
-import Recommend from '@/components/Recommend'
+import Recommend from '@/components/category/CategoryPanel'
 
 export default {
   components: {

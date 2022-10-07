@@ -22,7 +22,7 @@
 </template>
 
 <script type="text/ecmascript-6">
-import Recommend from '@/components/Recommend'
+import Recommend from '@/components/category/CategoryPanel'
 import CategoryListCell from '@/components/category/CategoryListCell'
 import SectionTitle from '@/components/SectionTitle/SectionTitle'
 import { getAll } from '@/api/category'

@@ -24,7 +24,7 @@ import PhotoWall from '@/components/PhotoWall'
 import ArticleList from '@/components/Article/ArticleList'
 import About from '@/components/About'
 import FriendLinks from '@/components/FriendLinks'
-import Recommend from '@/components/Recommend'
+import Recommend from '@/components/category/CategoryPanel'
 
 export default {
   components: {

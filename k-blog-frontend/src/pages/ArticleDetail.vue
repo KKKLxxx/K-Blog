@@ -22,7 +22,7 @@
 import ArticlePageHeader from '@/components/Article/ArticlePageHeader'
 import ArticlePageContent from '@/components/Article/ArticlePageContent'
 import ArticlePageFooter from '@/components/Article/ArticlePageFooter'
-import Recommend from '@/components/Recommend'
+import Recommend from '@/components/category/CategoryPanel'
 import { getById } from '@/api/article'
 
 export default {
