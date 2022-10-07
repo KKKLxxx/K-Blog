@@ -1,7 +1,7 @@
 <template>
   <div>
     <section-title :mainTitle="mainTitle" :subTitle="subTitle">
-      <title-menu-filter slot="menu" @filterByMenu="getArticles" />
+<!--      <title-menu-filter slot="menu" @filterByMenu="getArticles" />-->
     </section-title>
     <article-list-cell v-for="article in articleList" :key="article.id" :article="article" />
     <iv-page :total="total" :current="pageParam.curPage"

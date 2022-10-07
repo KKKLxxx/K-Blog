@@ -37,7 +37,7 @@
             >
           </li>
           <li v-show="manager.id == null">
-            <router-link to="/login" class="nav-link" style="color: #E6E61A">登录</router-link>
+            <router-link to="/login" class="nav-link" style="color: #0d54d9">登录</router-link>
           </li>
           <li v-show="manager.id != null">
             <a class="nav-link iconfont" style="color: dodgerblue" @click="logout">{{ manager.name }}(点击注销)</a>

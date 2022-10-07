@@ -8,12 +8,12 @@
           <span class="publish-time"><iv-icon type="ios-time-outline" size="14" />{{ article.createTime }}</span>
         </p>
       </iv-col>
-      <iv-col :xs="24" :sm="14" :md="14" :lg="14" style="padding-left: 0;padding-right: 0;">
+<!--      <iv-col :xs="24" :sm="14" :md="14" :lg="14" style="padding-left: 0;padding-right: 0;">
         <p class="operate_info">
           <span><iv-icon type="md-eye" size="18" />阅读 {{ article.readNum }}</span>
           <span class="like"><a @click="likePost(article)"><iv-icon type="md-thumbs-up" size="19" /></a>点赞 {{ article.likeNum }}</span>
         </p>
-      </iv-col>
+      </iv-col>-->
     </iv-row>
   </div>
 </template>
@@ -70,9 +70,8 @@ export default {
     margin-bottom 18px
 
   .title
-    font-size 27px
-    line-height 33px
-    font-weight 500
+    font-size 30px
+    font-weight bold
     color $color-typegraphy-title
     margin-bottom 23px
     text-align center

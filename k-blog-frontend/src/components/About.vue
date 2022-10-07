@@ -6,7 +6,7 @@
     <!--    <p v-show="this.manager.name === ''" class="name">（待修改）</p>-->
     <!--    <p v-show="this.manager.name !== ''" class="name">{{ manager.name }}</p>-->
     <p class="name">KKKL</p>
-    <p class="desc">那次车窗起雾，写的还是你的名字</p>
+    <p class="desc">🐂🐒🐅-非核心功能就先404了-🐏🐕🐎</p>
     <div class="line"></div>
     <ul class="social">
       <li>
